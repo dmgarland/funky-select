@@ -24,11 +24,20 @@ class ActionView::Helpers::FormBuilder
   def options_list(method, choices, options)
     @template.content_tag :ul, :class => "funky-options #{method}-options" do
       choices.map do |label, value|
-        @template.content_tag :li, :data => { method => value } do
+        @template.content_tag :li, item_options(method, label, value) do
           @template.content_tag :div, label, :class => :name
         end
       end.join.html_safe
     end
+  end
+
+  def item_options(method, label, value)
+    if value.is_a? Hash
+      value.merge!(:class => "unclickable") if value[:heading]
+      value
+    else
+      { :data => { method => value }}
+    end.merge(:title => label)
   end
 
 end

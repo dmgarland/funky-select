@@ -1,6 +1,7 @@
 class FruitsController < ApplicationController
   before_filter do
-    @fruits = Hash[%w(Mango Apple Pear Banana).zip(%w(mango-1 apple-2 pear-3 banana-4))]
+    @fruits = {"All Fruits" => { :heading => true}, "Mango"=>"mango-1",
+    "Apple"=>"apple-2", "Pear"=>"pear-3", "Banana"=>"banana-4"}
   end
 
   # GET /fruits
