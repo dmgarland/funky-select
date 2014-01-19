@@ -1,6 +1,6 @@
 class FruitsController < ApplicationController
   before_filter do
-    @fruits = Hash[%w(Mango Apple Pear Banana).zip(%w(mango-1 apple-2 pear-3 banana-4))]
+    @fruits = Hash[%w(mango-1 apple-2 pear-3 banana-4).zip(%w(Mango Apple Pear Banana))]
   end
 
   # GET /fruits
