@@ -1,7 +1,7 @@
 class ActionView::Helpers::FormBuilder
 
   def funky_select(method, choices = {}, options = {})
-    @template.content_tag :div, :class => "funky-select #{method}-picker" do
+    @template.content_tag :div, :class => "funky-select #{method}_picker" do
       [ handle,
         selected(method, options),
         @template.hidden_field(@object_name, method),
@@ -22,7 +22,7 @@ class ActionView::Helpers::FormBuilder
   end
 
   def options_list(method, choices, options)
-    @template.content_tag :ul, :class => "funky-options #{method}-options" do
+    @template.content_tag :ul, :class => "funky-options #{method}_options" do
       choices.map do |label, value|
         @template.content_tag :li, item_options(method, label, value) do
           @template.content_tag :div, label, :class => :name
