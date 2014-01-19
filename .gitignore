@@ -49,3 +49,4 @@ pkg
 #*.rbc
 
 test/dummy/tmp
+test/dummy/log
