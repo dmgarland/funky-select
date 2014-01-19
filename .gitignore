@@ -51,3 +51,5 @@ pkg
 test/dummy/tmp
 test/dummy/log
 test/dummy/.sass-cache
+test/dummy/db/test.sqlite3
+test/dummy/db/development.sqlite3
