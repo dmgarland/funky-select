@@ -54,6 +54,11 @@ module Dummy
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.assets.paths += %w(javascripts images stylesheets).map do |p|
+      File.expand_path("../../../../app/assets/#{p}", __FILE__)
+    end
+
   end
 end
 

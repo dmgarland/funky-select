@@ -1,0 +1,126 @@
+// @import "admin/colors";
+// @import "global/fonts";
+// @import "global/mixins";
+
+/* Funky Custom Drop Down List */
+.funky-select {
+  width: 244px;
+  height: 49px;
+  line-height: 49px;
+  font-size: 24px;
+  border: 1px solid #dbc5d7;
+  background-color: #f6f1f5;
+  background: -moz-linear-gradient(top, #f6f1f5, #f0e8ee);
+  background: -webkit-gradient(linear, left top, left bottom, from(#f6f1f5), to(#f0e8ee));
+  background: -o-linear-gradient(top, #f6f1f5, #f0e8ee);
+  /* filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#{ie-hex-str(#f6f1f5)}', EndColorStr='#{ie-hex-str(#f0e8ee)}', GradientType=0); */
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+  color: #855272;
+
+  .selected {
+    background-repeat: no-repeat;
+    background-position: 6px center;
+    padding: 0px 3px 0px 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 49px;
+
+    &[data-is-editing="1"] {
+      width: 404px;
+      height: 49px;
+      margin:0px;
+      background: white image-url('input-background.gif') repeat-x;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: text;
+    }
+
+    textarea.in-place-editor {
+      line-height: 49px;
+      height: 49px;
+      padding-left: 0px;
+      border: 0px;
+      resize: none;
+      outline: none;
+      width: 425px;
+      padding: 0px;
+
+      &::selection {
+        background-color: #FFFFFF !important;
+      }
+      &::-moz-selection {
+        background-color: #FFFFFF !important;
+      }
+    }
+  }
+
+  .handle {
+    float: right;
+    width: 39px;
+    height: 51px;
+    background: transparent image-url('drop-down-arrow.png') no-repeat center center;
+    background-position: 0px 1px;
+  }
+
+  ul.funky-options {
+    display: none;
+    margin: 0;
+    padding-left: 0;
+    width: inherit;
+    z-index: 999;
+    background: #FFF;
+    z-index: 99;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    top: -2px;
+    left: -1px;
+    border: 1px solid rgb(219, 197, 215);
+    border-top: 0px;
+
+    li {
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px;
+      padding: 0px 0px 0px 18px;
+      z-index: 99;
+      cursor: pointer;
+      overflow-y: auto;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      border-top: 1px solid #FFF;
+
+      &.change {
+        border-top: 1px solid #dbc5d7;
+      }
+    }
+
+    li.destination-header, li.destination-header:hover {
+      cursor: auto;
+      background: #7c4c6d;
+      border-top: 1px solid #7c4c6d;
+      color: #FFF !important;;
+      text-shadow: none;
+    }
+
+    li:hover, .chosen {
+      background-color: #aaf3c9;
+      color: #148848 !important;
+      text-shadow: white 1px 1px 1px;
+      border-top: 1px solid #3cc97b;
+      background: #76f1ad;
+      // I think we can't have this as it breaks the shipping drop down
+      // for shipping bands, because the LIs already have background images
+      // for the icons
+      // @include horizontal-gradient-background(#76f1ad, #99f0bd);
+      .name {
+        color: #148848 !important;
+      }
+    }
+  }
+
+}

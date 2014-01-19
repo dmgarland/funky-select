@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.funky_select :name %>
+    <%= f.funky_select :name, @fruits, :selected => "Please choose" %>
   </div>
   <div class="actions">
     <%= f.submit %>
