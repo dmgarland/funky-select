@@ -17,28 +17,13 @@ Jeweler::Tasks.new do |gem|
   gem.name = "funky-select"
   gem.homepage = "http://github.com/dmgarland/funky-select"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A ul list masquerading as a select box}
+  gem.description = %Q{A custom drop-down list with styles, used on the SupaDupa project}
   gem.email = "dan@dangarland.co.uk"
   gem.authors = ["Dan Garland"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
-
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-end
-
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
-end
 
 task :default => :test
 
