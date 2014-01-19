@@ -2,8 +2,7 @@ class ActionView::Helpers::FormBuilder
 
   def funky_select(method, choices = {}, options = {})
     @template.content_tag :div, :class => "funky-select #{method}-picker" do
-      [
-        handle,
+      [ handle,
         selected(method, options),
         @template.hidden_field(@object_name, method),
         options_list(method, choices, options)
