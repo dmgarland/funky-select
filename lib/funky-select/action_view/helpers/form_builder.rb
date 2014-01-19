@@ -23,7 +23,7 @@ class ActionView::Helpers::FormBuilder
 
   def options_list(method, choices, options)
     @template.content_tag :ul, :class => "funky-options #{method}-options" do
-      choices.map do |value, label|
+      choices.map do |label, value|
         @template.content_tag :li, :data => { method => value } do
           @template.content_tag :div, label, :class => :name
         end
