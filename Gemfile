@@ -5,6 +5,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'coffee-rails', '3.2.2'
 gem 'underscore-rails'
+gem 'uuid'
 
 group :development, :test do
   gem "rdoc", "~> 3.12"
@@ -15,4 +16,5 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner', '>= 1.2'
   gem 'pry'
+  gem 'pry-byebug'
 end
