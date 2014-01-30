@@ -45,6 +45,7 @@ class FruitsController < ApplicationController
   # POST /fruits
   # POST /fruits.json
   def create
+    binding.pry
     @fruit = Fruit.new(params[:fruit])
 
     respond_to do |format|

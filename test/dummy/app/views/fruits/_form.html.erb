@@ -15,7 +15,13 @@
     <%= f.label :name %><br />
     <%= f.funky_select :name, @fruits, :selected => "Please choose" %>
   </div>
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image, :multiple => true, :class => "funky-upload", :data => { :url => '/fruits' } %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "submit", class: "funky-submit" %>
   </div>
 <% end %>

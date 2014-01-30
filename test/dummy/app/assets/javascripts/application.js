@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require funky-select
+//= require underscore
+//= require funky-uploader
 //= require_tree .
