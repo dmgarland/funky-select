@@ -11,14 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.funky_select :name, @fruits, :selected => "Please choose" %>
-  </div>
+
 
   <div class="field">
     <%= f.label :image %><br />
-    <%= f.file_field :image, :multiple => true, :class => "funky-upload", :data => { :url => '/fruits' } %>
+    <%= f.file_field :image, :multiple => true, :class => "funky-upload", :data => { :url => '/fruit_images.js' } %>
+  </div>
+
+    <%= f.hidden_field :uuid %>
+
+  <div id="file-holder">
   </div>
 
   <div class="actions">

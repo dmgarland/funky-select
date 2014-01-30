@@ -43,7 +43,8 @@ function uploadFile(file, _this) {
     cache: false,
     contentType: false,
     processData: false,
-    success: function() {
+    success: function(json) {
+      console.log(json)
       _.each(queue, function(f, i){
         if (file == f){
           queue.pop(i, 0)
@@ -55,6 +56,11 @@ function uploadFile(file, _this) {
         $(_this).closest("form").find("input[type=submit]").removeAttr('disabled');
         uploadComplete(_this);
       }
+
+      $("#uuid").val(json.uuid);
+      var image = $("<img>");
+      image.attr("src", json.path);
+      image.appendTo("#file-holder");
     }
 
   });

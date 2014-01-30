@@ -13,8 +13,11 @@ group :development, :test do
   gem "jeweler", "~> 2.0.0"
   gem "cucumber-rails", :require => false
   gem "sqlite3"
+  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner', '>= 1.2'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'launchy'
+  gem 'shoulda'
 end

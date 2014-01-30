@@ -1,8 +1,17 @@
 class FruitImagesController < ApplicationController
 
   def create
-    # Pending: Create Image depending on the relationship
-    binding.pry
+    upload = params[:upload]
+
+    if params[:fruit_id]
+      # attaching to product that already exists
+      @fruit = Fruit.find(params[:fruit_id])
+      @image = @fruit.images.create!(uuid: UUID.new.generate)
+    else
+      @image = Image.create!(uuid: UUID.new.generate, path: params[:file].tempfile.path)
+    end
+
+    render json: @image
   end
 
 end
