@@ -1,29 +1,45 @@
 <%= form_for(@fruit) do |f| %>
-  <% if @fruit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@fruit.errors.count, "error") %> prohibited this fruit from being saved:</h2>
+<% if @fruit.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@fruit.errors.count, "error") %> prohibited this fruit from being saved:</h2>
 
-      <ul>
-      <% @fruit.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <ul>
+    <% @fruit.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <div class="file-image"></div>
+  <div class="uploader-holder clearfix">
+    <div id="image-uploaded-holder"></div>
+
+    <h3><span class="dark-font">Drag & Drop</span> <span class="light-font">your photos here</span></h3>
+    <h4>or, click below to browse & upload them</h4>
+
+    <div class="file-uploader">
+      <button>UPLOAD PHOTOS</button>
+      <%= f.file_field :image, :multiple => true, :class => "funky-upload", :data => { :url => '/fruit_images.js' } %>
     </div>
-  <% end %>
 
-
-
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image, :multiple => true, :class => "funky-upload", :data => { :url => '/fruit_images.js' } %>
+    <div class="image-upload-info">
+      <div class="info-upload-header"><span class="question-mark">?</span><span class="small-title">Get the most out of your images:</span></div>
+        <p class="clearfix">Bigger is actually better! - JPEG, PNG or GIF images should ideally be 1024px wide</br> If you can, make sure that your photos are all the same size and orientation because they’ll look better together side by side in a grid Master Class tip! - You can re-name your image files so that customers can more easily find you on Google! - <a href="#">Find out more</a></p>
+      <div>
+    </div>
   </div>
+</div>
 
-    <%= f.hidden_field :uuid %>
 
-  <div id="file-holder">
-  </div>
+<%= f.hidden_field :uuid %>
 
-  <div class="actions">
-    <%= f.submit "submit", class: "funky-submit" %>
-  </div>
+<div id="file-holder">
+</div>
+
+<!-- <div class="actions">
+  <%#= f.submit "submit", class: "funky-submit" %>
+</div> -->
+
 <% end %>

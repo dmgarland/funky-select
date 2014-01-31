@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require funky-select
+ *= require funky-uploader
  *= require_tree .
  */
