@@ -1,6 +1,52 @@
 var queue = [];
 
 $(document).ready(function(){
+
+  $("#draggable-area").on("drop", function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    //add here code to upload images
+    var _this = this;
+
+    var files = event.originalEvent.dataTransfer.files;
+    $(".uploader-holder").removeClass("user-over-draggable-area");
+    _.each(files, function(file){
+      queue.push(file)
+    });
+
+    _.each(queue, function(file){
+      $(_this).closest("form").find("input[type=submit]").attr("disabled", "true");
+      uploadFile(file, _this)
+    });
+  });
+
+  $(document).on('dragenter', function(e) {
+    stopDragDrop(e);
+
+  });
+
+  $(document).on('dragleave', function(e){
+    stopDragDrop(e);
+    $(".file-image").removeClass("hidden");
+    $(".uploader-holder").removeClass("user-over-draggable-area");
+  });
+
+  $(document).on('dragover', function(e) {
+    stopDragDrop(e);
+    $(".file-image").addClass("hidden");
+    $(".uploader-holder").addClass("user-over-draggable-area");
+    // $(".uploader-holder").attr("style", "-webkit-box-shadow: inset 0 0 200px #854371;")
+  });
+
+  $(document).on('drop', function(e) {
+    stopDragDrop(e);
+  });
+
+  function stopDragDrop(e) {
+    e.stopPropagation();
+    e.preventDefault();
+  }
+
   $(".funky-upload").change(function(e){
 
     var _this = this;
@@ -51,7 +97,6 @@ function uploadFile(file, _this) {
         }
       });
 
-      // Callback about queue empty, allowing button be active again
       if (queue.length == 0){
         $(_this).closest("form").find("input[type=submit]").removeAttr('disabled');
         uploadComplete(_this);
@@ -59,9 +104,18 @@ function uploadFile(file, _this) {
 
       $("#uuid").val(json.uuid);
       var image = $("<img>");
+      var imageHolder = $("<div class='imageHolder'></div>")
       image.attr("src", json.path);
-      image.appendTo("#file-holder");
-    }
+      image.appendTo(imageHolder);
+      imageHolder.appendTo("#image-uploaded-holder");
+      $(imageHolder).animate({
+        width: "178px",
+        height: "178px"
+      }, 400 );
 
+
+
+
+    }
   });
 }
