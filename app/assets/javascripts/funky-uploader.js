@@ -5,7 +5,6 @@ $(document).ready(function(){
   $("#draggable-area").on("drop", function(event){
     event.preventDefault();
     event.stopPropagation();
-    //add here code to upload images
     var _this = this;
 
     var files = event.originalEvent.dataTransfer.files;
@@ -35,7 +34,6 @@ $(document).ready(function(){
     stopDragDrop(e);
     $(".file-image").addClass("hidden");
     $(".uploader-holder").addClass("user-over-draggable-area");
-    // $(".uploader-holder").attr("style", "-webkit-box-shadow: inset 0 0 200px #854371;")
   });
 
   $(document).on('drop', function(e) {
@@ -50,8 +48,6 @@ $(document).ready(function(){
   $(".funky-upload").change(function(e){
 
     var _this = this;
-
-    // $(_this).closest("form").find("input[type=submit]").attr("disabled", "true");
 
     _.each(_this.files, function(file){
       queue.push(file)
@@ -112,9 +108,6 @@ function uploadFile(file, _this) {
         width: "178px",
         height: "178px"
       }, 400 );
-
-
-
 
     }
   });
