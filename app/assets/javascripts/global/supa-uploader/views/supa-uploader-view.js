@@ -4,12 +4,36 @@ supaUploader.views.supaUploaderView = Backbone.view.extend({
   className: 'supa-uploader',
   template: JST['templates/supa-uploader'],
   events: {
-
-  }
+    'change .funky-upload' : 'normalUploader'
+    'drop #draggable-area' : 'draggableUploader'
+  },
 
   initialize: function(){
     this.listenTo(this.collection, 'change', this.render);
     this.listenTo(this.collection, 'reset', this.render);
+
+    // Maybe will be refactored, just Batman knows.
+    // Attached to the document on initialize, not possibility to attach them within this view, wouldn't work.
+    $(document).on('dragenter', function(event) {
+      stopDragDrop(event);
+    });
+
+    $(document).on('dragleave', function(event){
+      stopDragDrop(event);
+      $(".file-image").removeClass("hidden");
+      $(".uploader-holder").removeClass("user-over-draggable-area");
+    });
+
+    $(document).on('dragover', function(event) {
+      stopDragDrop(event);
+      $(".file-image").addClass("hidden");
+      $(".uploader-holder").addClass("user-over-draggable-area");
+    });
+
+    $(document).on('drop', function(event) {
+      stopDragDrop(event);
+    });
+
   },
 
   render: function(){
@@ -31,7 +55,7 @@ supaUploader.views.supaUploaderView = Backbone.view.extend({
     });
 
     _.each(queue, function(file){
-      $(_this).closest("form").find("input[type=submit]").attr("disabled", "true");
+      disableSubmit(_this);
       uploadFile(file, _this)
     });
   },
@@ -39,28 +63,6 @@ supaUploader.views.supaUploaderView = Backbone.view.extend({
   stopDragDrop: function(event){
     event.stopPropagation();
     event.preventDefault();
-  },
-
-  prepareToDrag: function(event){
-    $(document).on('dragenter', function(event) {
-      stopDragDrop(event);
-    });
-
-    $(document).on('dragleave', function(event){
-      stopDragDrop(event);
-      $(".file-image").removeClass("hidden");
-      $(".uploader-holder").removeClass("user-over-draggable-area");
-    });
-
-    $(document).on('dragover', function(event) {
-      stopDragDrop(event);
-      $(".file-image").addClass("hidden");
-      $(".uploader-holder").addClass("user-over-draggable-area");
-    });
-
-    $(document).on('drop', function(event) {
-      stopDragDrop(event);
-    });
   },
 
   normalUploader: function(event){
@@ -71,7 +73,7 @@ supaUploader.views.supaUploaderView = Backbone.view.extend({
     });
 
     _.each(queue, function(file){
-      $(_this).closest("form").find("input[type=submit]").attr("disabled", "true");
+      disableSubmit(_this);
       uploadFile(file, _this)
     });
   },
@@ -84,44 +86,31 @@ supaUploader.views.supaUploaderView = Backbone.view.extend({
     });
   },
 
-  getUrl: function(){
-    return $(".funky-upload").data('url');
+  disableSubmit: function(_this){
+    $(_this).closest("form").find("input[type=submit]").attr("disabled", "true");
   },
 
-  uploadFile: function(file, _this) {
-  var form_data = new FormData();
-  form_data.append('file', file);
-
-  $.ajax({
-    url: getUrl(),
-    type: 'POST',
-    data: form_data,
-    cache: false,
-    contentType: false,
-    processData: false,
-    success: function(json) {
-      _.each(queue, function(f, i){
-        if (file == f){
-          queue.pop(i, 0)
-        }
-      });
-
-      if (queue.length == 0){
-        $(_this).closest("form").find("input[type=submit]").removeAttr('disabled');
-        uploadComplete(_this);
-      }
-
-      $("#uuid").val(json.uuid);
-      // var image = $("<img>");
-      // var imageHolder = $("<div class='imageHolder'></div>")
-      // image.attr("src", json.path);
-      // image.appendTo(imageHolder);
-      // imageHolder.appendTo("#image-uploaded-holder");
-      // $(imageHolder).animate({
-      //   width: "178px",
-      //   height: "178px"
-      // }, 400 );
+  activateSubmit: function(){
+    if (queue.length == 0){
+      $(_this).closest("form").find("input[type=submit]").removeAttr('disabled');
+      // allows option to modify behaviour on other end
+      // uploadComplete(_this);
     }
-  });
+  },
+
+  uploadFile: function(file) {
+    var form_data = new FormData();
+    form_data.append('file', file);
+
+    this.model.save(file,
+                  { data: form_data },
+                  { success: deleteFromQueue(response) });
+  },
+
+  // ATTN: Not needing this right now
+
+  getUrl: function(){
+    return $(".funky-upload").data('url');
+  }
 
 });
