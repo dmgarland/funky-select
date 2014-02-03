@@ -14,8 +14,6 @@
 
     initialize: function(){
       var _this = this;
-      this.render();
-
       // Maybe will be refactored, just Batman knows.
       // Attached to the document on initialize, not possibility to attach them within this view, wouldn't work.
       $(document).on('dragenter', function(event) {
@@ -41,7 +39,11 @@
     },
 
     render: function(){
+      var _this = this;
       this.$el.html(this.template);
+      var image = new supaUploader.models.Image();
+      var view = new supaUploader.views.ImageView({ model: image });
+      _this.$el.find(".image-list").append(view.render().el);
       return this;
     },
 
@@ -93,15 +95,16 @@
     activateSubmit: function(_this){
       if (queue.length == 0){
         $(_this).closest("form").find("input[type=submit]").removeAttr('disabled');
-        // allows option to modify behaviour on other end
-        // uploadComplete(_this);
       }
+    },
+
+    renderImage: function(model, response){
+      console.log("hi");
     },
 
     uploadFile: function(file, _this) {
       var form_data = new FormData();
       form_data.append('file', file);
-      console.log("hi");
 
       _this.model.save(file,
                     { data: form_data,
@@ -112,7 +115,12 @@
                     { success: function(model, response){
                       deleteFromQueue(response);
                       activateSubmit(_this);
-                    } });
+                      renderImage(model, response);
+                    },
+                    error: function(model, response){
+                      console.log("here");
+                    }
+                  });
     },
 
     // ATTN: Not needing this right now

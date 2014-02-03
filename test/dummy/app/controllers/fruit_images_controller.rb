@@ -12,7 +12,6 @@ class FruitImagesController < ApplicationController
       @image = Image.create!(uuid: UUID.new.generate, path: params[:file].tempfile.path)
     end
 
-    render json: @image
+    render json: { file: @image }
   end
-
 end

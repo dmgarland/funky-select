@@ -7,6 +7,15 @@ supaUploader.collections.ImageList = Backbone.Collection.extend({
 
   initialize: function(){
 
+  },
+
+  render: function(){
+    var template_html = this.template({
+      skill: this.model.attributes
+    });
+
+    this.$el.html(template_html);
+    return this;
   }
 
 });
