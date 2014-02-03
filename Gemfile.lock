@@ -202,6 +202,7 @@ DEPENDENCIES
   coffee-rails (= 3.2.2)
   cucumber-rails
   database_cleaner (>= 1.2)
+  ejs
   jeweler (~> 2.0.0)
   jquery-rails
   launchy

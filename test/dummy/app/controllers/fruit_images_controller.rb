@@ -1,6 +1,7 @@
 class FruitImagesController < ApplicationController
 
   def create
+    binding.pry
     upload = params[:upload]
 
     if params[:fruit_id]

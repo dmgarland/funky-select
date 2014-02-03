@@ -7,7 +7,7 @@ gem 'coffee-rails', '3.2.2'
 gem 'underscore-rails'
 gem 'uuid'
 gem 'rails-backbone'
-
+gem 'ejs'
 
 group :development, :test do
   gem "rdoc", "~> 3.12"
