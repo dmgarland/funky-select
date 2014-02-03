@@ -20,6 +20,4 @@ supaUploader.views.ImageView = Backbone.View.extend({
     return this;
   },
 
-
-
 });

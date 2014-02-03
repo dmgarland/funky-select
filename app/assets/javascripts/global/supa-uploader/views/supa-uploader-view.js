@@ -41,8 +41,6 @@
     },
 
     render: function(){
-      console.log("hi");
-
       this.$el.html(this.template);
       return this;
     },
@@ -69,14 +67,14 @@
 
     normalUploader: function(event){
       var _this = this;
-
-      _.each(_this.files, function(file){
+      var files = event.target.files;
+      _.each(files, function(file){
         queue.push(file)
       });
 
       _.each(queue, function(file){
-        disableSubmit(_this);
-        uploadFile(file, _this)
+        _this.disableSubmit(_this);
+        _this.uploadFile(file, _this)
       });
     },
 
