@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require funky-uploader
+//= require boot
+//= require global/supa-uploader
+//= require global/supa-uploader/supa-uploader.js
 //= require_tree .
