@@ -1,0 +1,20 @@
+<div class="field">
+  <div class="file-image"></div>
+  <div class="uploader-holder" id="draggable-area">
+
+    <h3><span class="dark-font">Drag & Drop</span> <span class="light-font">your photos here</span></h3>
+    <h4>or, click below to browse & upload them</h4>
+
+    <div class="file-uploader">
+      <button>UPLOAD PHOTOS</button>
+      // <%= f.file_field :image, :multiple => true, :class => "funky-upload", :data => { :url => '/fruit_images.js' } %>
+      <input type="file" class="funky-upload" multiple>
+    </div>
+
+    <div class="image-upload-info">
+      <div class="info-upload-header"><span class="question-mark">?</span><span class="small-title">Get the most out of your images:</span></div>
+        <p class="clearfix">Bigger is actually better! - JPEG, PNG or GIF images should ideally be 1024px wide</br> If you can, make sure that your photos are all the same size and orientation because they’ll look better together side by side in a grid Master Class tip! - You can re-name your image files so that customers can more easily find you on Google! - <a href="#">Find out more</a></p>
+      <div>
+    </div>
+  </div>
+</div>
