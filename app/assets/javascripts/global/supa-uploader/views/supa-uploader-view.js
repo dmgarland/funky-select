@@ -90,7 +90,7 @@ supaUploader.views.supaUploaderView = Backbone.view.extend({
     $(_this).closest("form").find("input[type=submit]").attr("disabled", "true");
   },
 
-  activateSubmit: function(){
+  activateSubmit: function(_this){
     if (queue.length == 0){
       $(_this).closest("form").find("input[type=submit]").removeAttr('disabled');
       // allows option to modify behaviour on other end
@@ -98,13 +98,16 @@ supaUploader.views.supaUploaderView = Backbone.view.extend({
     }
   },
 
-  uploadFile: function(file) {
+  uploadFile: function(file, _this) {
     var form_data = new FormData();
     form_data.append('file', file);
 
     this.model.save(file,
                   { data: form_data },
-                  { success: deleteFromQueue(response) });
+                  { success: function(model, response){
+                    deleteFromQueue(response);
+                    activateSubmit(_this);
+                  } });
   },
 
   // ATTN: Not needing this right now
