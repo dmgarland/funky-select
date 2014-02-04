@@ -24,8 +24,5 @@
 //= require global/supa-uploader/supa-uploader.js
 //= require funky-uploader
 //= require underscore
-//= require backbone
-//= require backbone_rails_sync
-//= require backbone_datalink
 //= require backbone/dummy
 //= require_tree .
