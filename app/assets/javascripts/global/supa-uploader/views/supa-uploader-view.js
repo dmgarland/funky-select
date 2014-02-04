@@ -41,9 +41,6 @@
     render: function(){
       var _this = this;
       this.$el.html(this.template);
-      var image = new supaUploader.models.Image();
-      var view = new supaUploader.views.ImageView({ model: image });
-      _this.$el.find(".image-list").append(view.render().el);
       return this;
     },
 
@@ -98,8 +95,10 @@
       }
     },
 
-    renderImage: function(model, response){
-      console.log("hi");
+    renderImage: function(model, response, _this){
+      var image = new supaUploader.models.Image();
+      var view = new supaUploader.views.ImageView({ model: model });
+      _this.$el.find(".image-list").append(view.render().el);
     },
 
     uploadFile: function(file, _this) {
@@ -107,17 +106,16 @@
       form_data.append('file', file);
 
       _this.model.save(file,
-                    { data: form_data,
+                      { data: form_data,
                       type: "POST",
                       contentType: false,
-                      processData: false
+                      processData: false,
+                      success: function(model, response){
+                      _this.deleteFromQueue(response);
+                      _this.activateSubmit(_this);
+                      _this.renderImage(model, response, _this);
                     },
-                    { success: function(model, response){
-                      deleteFromQueue(response);
-                      activateSubmit(_this);
-                      renderImage(model, response);
-                    },
-                    error: function(model, response){
+                    error: function(){
                       console.log("here");
                     }
                   });

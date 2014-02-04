@@ -11,7 +11,7 @@ supaUploader.collections.ImageList = Backbone.Collection.extend({
 
   render: function(){
     var template_html = this.template({
-      skill: this.model.attributes
+      image: this.model.attributes
     });
 
     this.$el.html(template_html);
