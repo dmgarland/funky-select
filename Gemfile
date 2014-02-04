@@ -7,6 +7,10 @@ gem 'coffee-rails', '3.2.2'
 gem 'underscore-rails'
 gem 'uuid'
 gem 'rails-backbone'
+<<<<<<< HEAD
+=======
+gem 'ejs'
+>>>>>>> backbone_conversion
 
 group :development, :test do
   gem "rdoc", "~> 3.12"
@@ -18,7 +22,6 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner', '>= 1.2'
   gem 'pry'
-  gem 'pry-byebug'
   gem 'launchy'
   gem 'shoulda'
 end
