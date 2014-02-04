@@ -92,9 +92,9 @@ GEM
       rake
       rdoc
     journey (1.0.4)
-    jquery-rails (3.0.4)
-      railties (>= 3.0, < 5.0)
-      thor (>= 0.14, < 2.0)
+    jquery-rails (2.0.1)
+      railties (>= 3.2.0, < 5.0)
+      thor (~> 0.14)
     json (1.8.1)
     jwt (0.1.11)
       multi_json (>= 1.5)
@@ -202,12 +202,11 @@ DEPENDENCIES
   coffee-rails (= 3.2.2)
   cucumber-rails
   database_cleaner (>= 1.2)
-  ejs
   jeweler (~> 2.0.0)
-  jquery-rails
+  jquery-rails (= 2.0.1)
   launchy
   pry
-  rails (~> 3.2)
+  rails (= 3.2.11)
   rails-backbone
   rdoc (~> 3.12)
   sass-rails

@@ -1,13 +1,12 @@
 source "http://rubygems.org"
 
-gem 'rails', '~> 3.2'
-gem 'jquery-rails'
+gem 'rails', '3.2.11'
+gem 'jquery-rails', '2.0.1'
 gem 'sass-rails'
 gem 'coffee-rails', '3.2.2'
 gem 'underscore-rails'
 gem 'uuid'
 gem 'rails-backbone'
-gem 'ejs'
 
 group :development, :test do
   gem "rdoc", "~> 3.12"
