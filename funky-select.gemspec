@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Dan Garland"]
-  s.date = "2014-01-19"
+  s.date = "2014-02-04"
   s.description = "A custom drop-down list with styles, used on the SupaDupa project"
   s.email = "dan@dangarland.co.uk"
   s.extra_rdoc_files = [
@@ -28,28 +28,67 @@ Gem::Specification.new do |s|
     "VERSION",
     "app/assets/images/drop-down-arrow.png",
     "app/assets/images/input-background.gif",
+    "app/assets/images/uploader-file.png",
+    "app/assets/javascripts/boot.js",
     "app/assets/javascripts/funky-select.js.coffee",
+    "app/assets/javascripts/funky-uploader.js",
+    "app/assets/javascripts/global/supa-uploader/collections/image-list.js",
+    "app/assets/javascripts/global/supa-uploader/models/image.js",
+    "app/assets/javascripts/global/supa-uploader/supa-uploader.js",
+    "app/assets/javascripts/global/supa-uploader/templates/image.jst.ejs",
+    "app/assets/javascripts/global/supa-uploader/templates/supa-uploader.jst.ejs",
+    "app/assets/javascripts/global/supa-uploader/views/image-view.js",
+    "app/assets/javascripts/global/supa-uploader/views/supa-uploader-view.js",
+    "app/assets/javascripts/lib/backbone.js",
+    "app/assets/javascripts/lib/ejs_production.js",
     "app/assets/stylesheets/funky-select.scss",
+    "app/assets/stylesheets/funky-uploader.scss",
     "features/funky_select.feature",
+    "features/funky_uploader.feature",
+    "features/resources/bedroom.jpg",
+    "features/resources/coolkitchen.jpg",
     "features/step_definitions/funky_select_steps.rb",
+    "features/step_definitions/funky_uploader_steps.rb",
     "features/support/env.rb",
     "funky-select.gemspec",
     "lib/funky-select.rb",
     "lib/funky-select/action_view/helpers/form_builder.rb",
     "test/dummy/README.rdoc",
     "test/dummy/Rakefile",
+    "test/dummy/admin/calibri-bold.ttf",
+    "test/dummy/admin/calibri-webfont.eot",
+    "test/dummy/admin/calibri-webfont.svg",
+    "test/dummy/admin/calibri-webfont.ttf",
+    "test/dummy/admin/calibri-webfont.woff",
+    "test/dummy/admin/caslon-webfont.eot",
+    "test/dummy/admin/caslon-webfont.svg",
+    "test/dummy/admin/caslon-webfont.ttf",
+    "test/dummy/admin/caslon-webfont.woff",
+    "test/dummy/admin/monaco.eot",
+    "test/dummy/admin/monaco.ttf",
+    "test/dummy/admin/monaco.woff",
     "test/dummy/app/assets/javascripts/application.js",
+    "test/dummy/app/assets/javascripts/backbone/dummy.js.coffee",
+    "test/dummy/app/assets/javascripts/backbone/models/.gitkeep",
+    "test/dummy/app/assets/javascripts/backbone/routers/.gitkeep",
+    "test/dummy/app/assets/javascripts/backbone/templates/.gitkeep",
+    "test/dummy/app/assets/javascripts/backbone/views/.gitkeep",
+    "test/dummy/app/assets/javascripts/fruit_images.js.coffee",
     "test/dummy/app/assets/javascripts/fruits.js",
     "test/dummy/app/assets/stylesheets/application.css",
+    "test/dummy/app/assets/stylesheets/fruit_images.css.scss",
     "test/dummy/app/assets/stylesheets/fruits.css",
     "test/dummy/app/assets/stylesheets/scaffold.css",
     "test/dummy/app/controllers/application_controller.rb",
+    "test/dummy/app/controllers/fruit_images_controller.rb",
     "test/dummy/app/controllers/fruits_controller.rb",
     "test/dummy/app/helpers/application_helper.rb",
+    "test/dummy/app/helpers/fruit_images_helper.rb",
     "test/dummy/app/helpers/fruits_helper.rb",
     "test/dummy/app/mailers/.gitkeep",
     "test/dummy/app/models/.gitkeep",
     "test/dummy/app/models/fruit.rb",
+    "test/dummy/app/models/image.rb",
     "test/dummy/app/views/fruits/_form.html.erb",
     "test/dummy/app/views/fruits/edit.html.erb",
     "test/dummy/app/views/fruits/index.html.erb",
@@ -74,18 +113,66 @@ Gem::Specification.new do |s|
     "test/dummy/config/routes.rb",
     "test/dummy/db/development.sqlite3",
     "test/dummy/db/migrate/20140119124405_create_fruits.rb",
+    "test/dummy/db/migrate/20140130110558_create_images.rb",
+    "test/dummy/db/migrate/20140130142105_add_uuid_to_image.rb",
+    "test/dummy/db/migrate/20140130150237_add_path_to_image.rb",
+    "test/dummy/db/migrate/20140130153452_add_uuid_to_fruit.rb",
     "test/dummy/db/schema.rb",
+    "test/dummy/db/structure.sql",
+    "test/dummy/global/calibri-webfont.eot",
+    "test/dummy/global/calibri-webfont.svg",
+    "test/dummy/global/calibri-webfont.ttf",
+    "test/dummy/global/calibri-webfont.woff",
+    "test/dummy/global/caslon-italic-webfont.eot",
+    "test/dummy/global/caslon-italic-webfont.svg",
+    "test/dummy/global/caslon-italic-webfont.ttf",
+    "test/dummy/global/caslon-italic-webfont.woff",
+    "test/dummy/global/caslon-webfont.eot",
+    "test/dummy/global/caslon-webfont.svg",
+    "test/dummy/global/caslon-webfont.ttf",
+    "test/dummy/global/caslon-webfont.woff",
+    "test/dummy/global/supadupa-search-icons.eot",
     "test/dummy/lib/assets/.gitkeep",
     "test/dummy/log/.gitkeep",
     "test/dummy/public/404.html",
     "test/dummy/public/422.html",
     "test/dummy/public/500.html",
     "test/dummy/public/favicon.ico",
+    "test/dummy/public/fonts/admin/Calibri.ttf",
+    "test/dummy/public/fonts/admin/calibri-bold.ttf",
+    "test/dummy/public/fonts/admin/calibri-webfont.eot",
+    "test/dummy/public/fonts/admin/calibri-webfont.svg",
+    "test/dummy/public/fonts/admin/calibri-webfont.ttf",
+    "test/dummy/public/fonts/admin/calibri-webfont.woff",
+    "test/dummy/public/fonts/admin/caslon-webfont.eot",
+    "test/dummy/public/fonts/admin/caslon-webfont.svg",
+    "test/dummy/public/fonts/admin/caslon-webfont.ttf",
+    "test/dummy/public/fonts/admin/caslon-webfont.woff",
+    "test/dummy/public/fonts/admin/monaco.eot",
+    "test/dummy/public/fonts/admin/monaco.ttf",
+    "test/dummy/public/fonts/admin/monaco.woff",
+    "test/dummy/public/fonts/global/calibri-webfont.eot",
+    "test/dummy/public/fonts/global/calibri-webfont.svg",
+    "test/dummy/public/fonts/global/calibri-webfont.ttf",
+    "test/dummy/public/fonts/global/calibri-webfont.woff",
+    "test/dummy/public/fonts/global/caslon-italic-webfont.eot",
+    "test/dummy/public/fonts/global/caslon-italic-webfont.svg",
+    "test/dummy/public/fonts/global/caslon-italic-webfont.ttf",
+    "test/dummy/public/fonts/global/caslon-italic-webfont.woff",
+    "test/dummy/public/fonts/global/caslon-webfont.eot",
+    "test/dummy/public/fonts/global/caslon-webfont.svg",
+    "test/dummy/public/fonts/global/caslon-webfont.ttf",
+    "test/dummy/public/fonts/global/caslon-webfont.woff",
+    "test/dummy/public/fonts/global/supadupa-search-icons.eot",
     "test/dummy/script/rails",
     "test/dummy/test/fixtures/fruits.yml",
+    "test/dummy/test/fixtures/images.yml",
+    "test/dummy/test/functional/fruit_images_controller_test.rb",
     "test/dummy/test/functional/fruits_controller_test.rb",
     "test/dummy/test/unit/fruit_test.rb",
+    "test/dummy/test/unit/helpers/fruit_images_helper_test.rb",
     "test/dummy/test/unit/helpers/fruits_helper_test.rb",
+    "test/dummy/test/unit/image_test.rb",
     "test/funky-select_test.rb",
     "test/test_helper.rb"
   ]
@@ -102,41 +189,62 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<jquery-rails>, [">= 0"])
       s.add_runtime_dependency(%q<sass-rails>, [">= 0"])
       s.add_runtime_dependency(%q<coffee-rails>, ["= 3.2.2"])
+      s.add_runtime_dependency(%q<underscore-rails>, [">= 0"])
+      s.add_runtime_dependency(%q<uuid>, [">= 0"])
+      s.add_runtime_dependency(%q<rails-backbone>, [">= 0"])
+      s.add_runtime_dependency(%q<ejs>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 2.0.0"])
       s.add_development_dependency(%q<cucumber-rails>, [">= 0"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
+      s.add_development_dependency(%q<capybara>, [">= 0"])
       s.add_development_dependency(%q<selenium-webdriver>, [">= 0"])
       s.add_development_dependency(%q<database_cleaner>, [">= 1.2"])
       s.add_development_dependency(%q<pry>, [">= 0"])
+      s.add_development_dependency(%q<launchy>, [">= 0"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
     else
       s.add_dependency(%q<rails>, ["~> 3.2"])
       s.add_dependency(%q<jquery-rails>, [">= 0"])
       s.add_dependency(%q<sass-rails>, [">= 0"])
       s.add_dependency(%q<coffee-rails>, ["= 3.2.2"])
+      s.add_dependency(%q<underscore-rails>, [">= 0"])
+      s.add_dependency(%q<uuid>, [">= 0"])
+      s.add_dependency(%q<rails-backbone>, [">= 0"])
+      s.add_dependency(%q<ejs>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, ["~> 1.0"])
       s.add_dependency(%q<jeweler>, ["~> 2.0.0"])
       s.add_dependency(%q<cucumber-rails>, [">= 0"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
+      s.add_dependency(%q<capybara>, [">= 0"])
       s.add_dependency(%q<selenium-webdriver>, [">= 0"])
       s.add_dependency(%q<database_cleaner>, [">= 1.2"])
       s.add_dependency(%q<pry>, [">= 0"])
+      s.add_dependency(%q<launchy>, [">= 0"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
     end
   else
     s.add_dependency(%q<rails>, ["~> 3.2"])
     s.add_dependency(%q<jquery-rails>, [">= 0"])
     s.add_dependency(%q<sass-rails>, [">= 0"])
     s.add_dependency(%q<coffee-rails>, ["= 3.2.2"])
+    s.add_dependency(%q<underscore-rails>, [">= 0"])
+    s.add_dependency(%q<uuid>, [">= 0"])
+    s.add_dependency(%q<rails-backbone>, [">= 0"])
+    s.add_dependency(%q<ejs>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, ["~> 1.0"])
     s.add_dependency(%q<jeweler>, ["~> 2.0.0"])
     s.add_dependency(%q<cucumber-rails>, [">= 0"])
     s.add_dependency(%q<sqlite3>, [">= 0"])
+    s.add_dependency(%q<capybara>, [">= 0"])
     s.add_dependency(%q<selenium-webdriver>, [">= 0"])
     s.add_dependency(%q<database_cleaner>, [">= 1.2"])
     s.add_dependency(%q<pry>, [">= 0"])
+    s.add_dependency(%q<launchy>, [">= 0"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
   end
 end
 

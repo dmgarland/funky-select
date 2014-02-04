@@ -1,21 +1,26 @@
 <%= form_for(@fruit) do |f| %>
-  <% if @fruit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@fruit.errors.count, "error") %> prohibited this fruit from being saved:</h2>
+<% if @fruit.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@fruit.errors.count, "error") %> prohibited this fruit from being saved:</h2>
 
-      <ul>
-      <% @fruit.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @fruit.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.funky_select :name, @fruits, :selected => "Please choose" %>
-  </div>
+<div class="field">
+  <div id="supauploader-holder"></div>
+</div>
+
+<%= f.hidden_field :uuid %>
+
+<div id="file-holder">
+</div>
+
   <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit "submit", class: "funky-submit" %>
+</div>
 <% end %>

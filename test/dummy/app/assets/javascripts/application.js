@@ -12,5 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require funky-select
+//= require underscore
+//= require lib/backbone
+//= require lib/ejs_production
+//= require boot
+//= require /global/supa-uploader/models
+//= require /global/supa-uploader/collections
+//= require /global/supa-uploader/views
+//= require /global/supa-uploader/templates
+//= require /global/supa-uploader/routers
+//= require global/supa-uploader/supa-uploader.js
+//= require funky-uploader
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/dummy
 //= require_tree .
