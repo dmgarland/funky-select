@@ -79,7 +79,7 @@
 
     deleteFromQueue: function(response, model){
       _.each(queue, function(file, i){
-        if (file.name == response.file.upload_file_name && file.size === response.file.upload_file_size){
+        if (file.name == response.upload_file_name && file.size === response.upload_file_size){
           queue.pop(i, 0)
         }
         console.log(queue);
@@ -107,6 +107,7 @@
       var form_data = new FormData();
       form_data.append('file', file);
       form_data.append('uuid', $("#product_uuid").val());
+      form_data.append('id', $("#product_id").val());
 
       _this.model.save(file,
                       { data: form_data,
