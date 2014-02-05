@@ -14,7 +14,7 @@ class FruitImagesController < ApplicationController
     # be handled by the host application using Paperclip or Carrierwave.
     @image.url = "/assets/beach.jpg"
 
-    render json: { file: @image, url: @image.url }.as_json
+    render json: @image.as_json.merge(:url => @image.url)
   end
 
 end

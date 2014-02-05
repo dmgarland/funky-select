@@ -12,7 +12,7 @@ When(/^I can not click on the button$/) do
 end
 
 Then(/^I see the images uploaded on the page$/) do
-  page.has_xpath?("//img[@src=\"/assets/beach.jpg\"]")
+  assert page.has_xpath?("//img[@src=\"/assets/beach.jpg\"]")
 end
 
 Then(/^I can click on the button$/) do
