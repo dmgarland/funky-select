@@ -106,19 +106,19 @@
       form_data.append('file', file);
 
       _this.model.save(file,
-                      { data: form_data,
-                      type: "POST",
-                      contentType: false,
-                      processData: false,
-                      success: function(model, response){
-                      _this.deleteFromQueue(response);
-                      _this.activateSubmit(_this);
-                      _this.renderImage(model, response, _this);
-                    },
-                    error: function(){
-                      console.log("here");
-                    }
-                  });
+          { data: form_data,
+          type: "POST",
+          contentType: false,
+          processData: false,
+          success: function(model, response){
+          _this.deleteFromQueue(response);
+          _this.activateSubmit(_this);
+          _this.renderImage(model, response, _this);
+        },
+        error: function(){
+          console.log("here");
+        }
+      });
     },
 
     // ATTN: Not needing this right now
