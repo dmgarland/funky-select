@@ -77,21 +77,23 @@
       });
     },
 
-    deleteFromQueue: function(response){
+    deleteFromQueue: function(response, model){
       _.each(queue, function(file, i){
-        if (file == response){
+        if (file.name == response.upload_file_name && file.size === response.upload_file_size){
           queue.pop(i, 0)
         }
+        console.log(queue);
       });
     },
 
     disableSubmit: function(_this){
-      $(_this).closest("form").find("input[type=submit]").attr("disabled", "true");
+      $(":submit").attr("id", "submit_data_button").attr("disabled", "disabled");
     },
 
     activateSubmit: function(_this){
       if (queue.length == 0){
-        $(_this).closest("form").find("input[type=submit]").removeAttr('disabled');
+        $(":submit").attr("id", "submit_data_button").removeAttr("disabled");
+        // $("#submit_data_button").removeAttr('disabled');
       }
     },
 
@@ -104,21 +106,23 @@
     uploadFile: function(file, _this) {
       var form_data = new FormData();
       form_data.append('file', file);
+      form_data.append('uuid', $("#product_uuid").val());
+      form_data.append('id', $("#product_id").val());
 
       _this.model.save(file,
-          { data: form_data,
-          type: "POST",
-          contentType: false,
-          processData: false,
-          success: function(model, response){
-          _this.deleteFromQueue(response);
-          _this.activateSubmit(_this);
-          _this.renderImage(model, response, _this);
-        },
-        error: function(){
-          console.log("here");
-        }
-      });
+                      { data: form_data,
+                      type: "POST",
+                      contentType: false,
+                      processData: false,
+                      success: function(model, response){
+                      _this.deleteFromQueue(response, model);
+                      _this.activateSubmit(_this);
+                      _this.renderImage(model, response, _this);
+                    },
+                    error: function(error){
+                      console.log(error);
+                    }
+                  });
     },
 
     // ATTN: Not needing this right now
