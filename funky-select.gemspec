@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Dan Garland"]
-  s.date = "2014-02-04"
+  s.date = "2014-02-05"
   s.description = "A custom drop-down list with styles, used on the SupaDupa project"
   s.email = "dan@dangarland.co.uk"
   s.extra_rdoc_files = [
@@ -71,14 +71,10 @@ Gem::Specification.new do |s|
     "test/dummy/admin/monaco.eot",
     "test/dummy/admin/monaco.ttf",
     "test/dummy/admin/monaco.woff",
+    "test/dummy/app/assets/images/beach.jpg",
     "test/dummy/app/assets/javascripts/application.js",
-    "test/dummy/app/assets/javascripts/backbone/dummy.js.coffee",
-    "test/dummy/app/assets/javascripts/backbone/models/.gitkeep",
-    "test/dummy/app/assets/javascripts/backbone/routers/.gitkeep",
-    "test/dummy/app/assets/javascripts/backbone/templates/.gitkeep",
-    "test/dummy/app/assets/javascripts/backbone/views/.gitkeep",
-    "test/dummy/app/assets/javascripts/fruit_images.js.coffee",
     "test/dummy/app/assets/javascripts/fruits.js",
+    "test/dummy/app/assets/javascripts/lib/backbone.js",
     "test/dummy/app/assets/stylesheets/application.css",
     "test/dummy/app/assets/stylesheets/fruit_images.css.scss",
     "test/dummy/app/assets/stylesheets/fruits.css",
