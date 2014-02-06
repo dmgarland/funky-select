@@ -2,8 +2,9 @@
   <% _.each(image, function(img){ %>
     <li class="product-image">
       <div id='image-container-<%= img.id %>' class="image-container">
+      <img alt="Move" class="move-uploaded-image hidden" src="/assets/admin/move.png" title="Move  Photo" />
         <div class='background'>
-          <img alt="<%= img.upload_file_name %>" src="<%= img.image_url %>" />
+          <img alt="<%= img.upload_file_name %>" src="<%= img.image_url %>" class="uploaded-image" />
           <a class="layer-over-image" href="#"><!-- <p class="restore-info hidden">THIS IMAGE WILL BE DELETED ON SAVE! </br> CHANGE YOUR MIND? </br>CLICK TO RE-INSTATE</p> --></a>
         </div>
         <span class="action-icon-holder">

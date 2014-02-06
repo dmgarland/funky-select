@@ -223,6 +223,12 @@
     width: 30px;
   }
 
+  .move-uploaded-image {
+    z-index: 30;
+    position: relative;
+    margin: 45% 0 0 15%;
+  }
+
   .action-icon-holder {
     z-index: 20;
     position: relative;
