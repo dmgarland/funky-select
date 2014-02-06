@@ -13,6 +13,11 @@
     },
 
     initialize: function(){
+      this.collection = new supaUploader.collections.ImageList();
+
+      var ProductId = $("#product_id").val();
+      this.collection.product_id = ProductId;
+
       var _this = this;
       // Maybe will be refactored, just Batman knows.
       // Attached to the document on initialize, not possibility to attach them within this view, wouldn't work.
@@ -35,12 +40,20 @@
       $(document).on('drop', function(event) {
         _this.stopDragDrop(event);
       });
-
     },
 
     render: function(){
       var _this = this;
-      this.$el.html(this.template);
+      this.$el.html(this.template());
+
+      this.collection.fetch(
+      {
+        success: function(models, response){
+          models.forEach(function(model){
+            _this.renderMultipleImages(model, response, _this);
+          });
+        }
+      });
       return this;
     },
 
@@ -93,7 +106,6 @@
     activateSubmit: function(_this){
       if (queue.length == 0){
         $(":submit").attr("id", "submit_data_button").removeAttr("disabled");
-        // $("#submit_data_button").removeAttr('disabled');
       }
     },
 
@@ -103,11 +115,19 @@
       _this.$el.find(".image-list").append(view.render().el);
     },
 
+    renderMultipleImages: function(model, response, _this){
+      var image = new supaUploader.models.Image();
+      var view = new supaUploader.views.ImageListView({ model: model });
+      _this.$el.find(".uploader-holder").prepend(view.render().el);
+    },
+
     uploadFile: function(file, _this) {
       var form_data = new FormData();
       form_data.append('file', file);
       form_data.append('uuid', $("#product_uuid").val());
-      form_data.append('id', $("#product_id").val());
+
+      var ProductId = $("#product_id").val();
+      form_data.append('id', ProductId);
 
       _this.model.save(file,
                       { data: form_data,
