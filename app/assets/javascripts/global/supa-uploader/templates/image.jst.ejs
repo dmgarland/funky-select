@@ -1,20 +1,10 @@
 <div id='image-container-<%= image.id %>' class="image-container">
   <div class='background'>
-    <img alt="<%= image.upload_file_name %>" src="<%= image.image_url %>" />
+    <img alt="<%= image.upload_file_name %>" src="<%= image.image_url %>" class="uploaded-image" />
+    <a class="layer-over-image" href="#"><!-- <p>THIS IMAGE WILL BE DELETED ON SAVE! CHANGE YOUR MIND? CLICK TO RE-INSTATE</p> --></a>
   </div>
-    <div class='undelete' style='display:none'>
-      This Image will be deleted on save!
-      <br>
-      <br>
-      change your mind? Click to re-instate
-      <br>
-      <img alt="Undelete" class="undelete" src="/assets/admin/undelete-bd3abe6ffac1fec8d8b7b1857c49e9ee.png" title="Undelete" />
-    </div>
-</div>
-  <div class='actions'>
-    <img alt="Drag-horizontal" class="move" src="/assets/admin/drag-horizontal-83cc7649590b8272bfd961e3f3107b3d.png" title="Drag to re-arrange photos" />
-    <input id="product_images_attributes_2_position" name="product[images_attributes][2][position]" type="hidden" value="1" />
-    <img alt="Delete" class="delete" src="/assets/admin/delete-233a1da230f816839e11e931bcd5d2f5.png" title="Delete Photo" />
-    <input id="product_images_attributes_2__destroy" name="product[images_attributes][2][_destroy]" type="hidden" value="false" />
-    <input id="product_images_attributes_2_id" name="product[images_attributes][2][id]" type="hidden" value="<%= image.id %>" />
+    <span class="action-icon-holder">
+      <img alt="Delete" class="delete" src="/assets/admin/delete-233a1da230f816839e11e931bcd5d2f5.png" title="Delete Photo" />
+      <img alt="Restore" class="restore hidden" src="/assets/admin/undelete-bd3abe6ffac1fec8d8b7b1857c49e9ee.png" title="Restore Photo" />
+    </span>
 </div>
