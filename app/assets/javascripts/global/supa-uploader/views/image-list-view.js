@@ -18,35 +18,25 @@ supaUploader.views.ImageListView = Backbone.View.extend({
 
   render: function(){
     $(".file-image").addClass("hidden");
-    $("#sortable-image-list").remove();
     var template_html = this.template({
       images: this.model.attributes
     });
 
     this.$el.html(template_html);
-    $("#sortable-image-list").sortable({
-      axis: 'x',
-      dropOnEmpty: false,
-      handle: '.move',
-      cursor: 'crosshair',
-      items: 'div.question-row',
-      opacity: 0.4,
-      scroll: true,
-      containment: 'parent',
-      // update: function() {
-      //   calculate_positions('#personalized_product_options .question-row');
-      // }
-    });
-    $("#sortable-image-list").disableSelection();
+
     return this;
   },
 
   deleteImage: function(event){
     $(event.currentTarget.children[0]).toggleClass('hidden');
     $(event.currentTarget.children[1]).toggleClass('hidden');
+    $(event.currentTarget.children[2]).attr('value',$(event.currentTarget.children[2]).attr('value') == 'true' ? 'false' : 'true');
     // NOTE - WIP - looking for smoother way to do it with ID
     $(event.currentTarget.previousElementSibling.children[1]).toggleClass("selected");
     $(event.currentTarget.previousElementSibling.children[1].children).toggleClass("hidden");
+
+    console.log("hi");
+
   },
 
   stopDragDrop: function(event){
@@ -64,6 +54,7 @@ supaUploader.views.ImageListView = Backbone.View.extend({
 
   activateUploader: function(event){
     $('.uploader-holder').attr('id', 'draggable-area');
+        $(event.currentTarget.parentNode.parentNode.firstElementChild).toggleClass("hidden");
   }
 
 });
