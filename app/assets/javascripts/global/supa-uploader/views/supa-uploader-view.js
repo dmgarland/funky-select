@@ -43,6 +43,7 @@
     },
 
     render: function(){
+
       var _this = this;
       this.$el.html(this.template());
 
@@ -54,6 +55,7 @@
           });
         }
       });
+
       return this;
     },
 
@@ -103,24 +105,26 @@
     },
 
     activateSubmit: function(_this){
-      if (queue.length == 0){
-        $(":submit").attr("id", "submit_data_button").removeAttr("disabled");
-      }
+      $(":submit").attr("id", "submit_data_button").removeAttr("disabled");
     },
 
     renderImage: function(model, response, _this){
       var image = new supaUploader.models.Image();
       var view = new supaUploader.views.ImageView({ model: model });
       _this.$el.find("#sortable-image-list").append(view.render().el);
+      _this.activateSubmit(_this);
     },
 
     renderMultipleImages: function(model, response, _this){
+      $("#sortable-image-list").remove();
       var image = new supaUploader.models.Image();
       var view = new supaUploader.views.ImageListView({ model: model });
       _this.$el.find(".uploader-holder").prepend(view.render().el);
+      _this.activateSubmit(_this);
     },
 
     uploadFile: function(file, _this) {
+
       var form_data = new FormData();
       form_data.append("file", file);
       form_data.append("uuid", $("#product_uuid").val());
@@ -129,26 +133,25 @@
       form_data.append("id", ProductId);
 
       _this.model.save(file,
-                      { data: form_data,
-                      type: "POST",
-                      contentType: false,
-                      processData: false,
-                      success: function(model, response){
-                      _this.deleteFromQueue(response, model);
-                      _this.activateSubmit(_this);
-                      _this.renderImage(model, response, _this);
-                    },
-                    error: function(error){
-                      console.log(error);
-                    }
-                  });
+                      {
+                        data: form_data,
+                        type: "POST",
+                        contentType: false,
+                        processData: false,
+                        success: function(model, response){
+                          _this.deleteFromQueue(response, model);
+                          _this.renderImage(model, response, _this);
+                        },
+                      error: function(error){
+                        console.log(error);
+                      }
+      });
     },
 
     // ATTN: Not needing this right now
     getUrl: function(){
       return $(".funky-upload").data("url");
     }
-
   });
 
 })();
