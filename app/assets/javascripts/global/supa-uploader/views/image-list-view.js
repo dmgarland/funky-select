@@ -5,10 +5,9 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   id: 'sortable-image-list',
   template: JST['global/supa-uploader/templates/image-list'],
   events: {
-    // 'click .image-container' : 'de',
     'click .action-icon-holder' : 'deleteImage',
-    'mousedown .uploaded-image' : 'toggleMove',
-    'mouseup .uploaded-image' : 'toggleMove',
+    'mousedown .uploaded-image' : 'removeMove',
+    'mouseup .uploaded-image' : 'addMove',
     'dragstart .uploaded-image' : 'deactivateUploader',
     'dragend .uploaded-image' : 'activateUploader',
   },
@@ -34,9 +33,6 @@ supaUploader.views.ImageListView = Backbone.View.extend({
     // NOTE - WIP - looking for smoother way to do it with ID
     $(event.currentTarget.previousElementSibling.children[1]).toggleClass("selected");
     $(event.currentTarget.previousElementSibling.children[1].children).toggleClass("hidden");
-
-    console.log("hi");
-
   },
 
   stopDragDrop: function(event){
@@ -44,8 +40,12 @@ supaUploader.views.ImageListView = Backbone.View.extend({
     event.preventDefault();
   },
 
-  toggleMove: function(event){
-    $(event.currentTarget.parentNode.parentNode.firstElementChild).toggleClass("hidden");
+  addMove: function(event){
+    $(event.currentTarget.parentNode.parentNode.firstElementChild).addClass("hidden");
+  },
+
+  removeMove: function(event){
+    $(event.currentTarget.parentNode.parentNode.firstElementChild).removeClass('hidden');
   },
 
   deactivateUploader: function(event){

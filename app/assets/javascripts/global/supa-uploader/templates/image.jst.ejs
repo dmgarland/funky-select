@@ -1,11 +1,12 @@
 <div id='image-container-<%= image.id %>' class="image-container">
-  <img alt="Move" class="move-uploaded-image hidden" src="/assets/admin/move.png" title="Move  Photo" />
+<img alt="Move" class="move-uploaded-image hidden" src="/assets/admin/move.png" title="Move Photo" />
   <div class='background'>
     <img alt="<%= image.upload_file_name %>" src="<%= image.image_url %>" class="uploaded-image" />
-    <a class="layer-over-image" href="#"><!-- <p>THIS IMAGE WILL BE DELETED ON SAVE! CHANGE YOUR MIND? CLICK TO RE-INSTATE</p> --></a>
+    <a class="layer-over-image" href="#"><!-- <p class="restore-info hidden">THIS IMAGE WILL BE DELETED ON SAVE! </br> CHANGE YOUR MIND? </br>CLICK TO RE-INSTATE</p> --></a>
   </div>
-    <span class="action-icon-holder">
-      <img alt="Delete" class="delete" src="/assets/admin/delete-233a1da230f816839e11e931bcd5d2f5.png" title="Delete Photo" />
-      <img alt="Restore" class="restore hidden" src="/assets/admin/undelete-bd3abe6ffac1fec8d8b7b1857c49e9ee.png" title="Restore Photo" />
-    </span>
+  <span class="action-icon-holder">
+    <img alt="Delete" class="delete" src="/assets/admin/delete-233a1da230f816839e11e931bcd5d2f5.png" title="Delete Photo" />
+    <img alt="Restore" class="restore hidden" src="/assets/admin/undelete-bd3abe6ffac1fec8d8b7b1857c49e9ee.png" title="Restore Photo" />
+    <input name='product[images_attributes][][_destroy]' type="hidden" value="false">
+  </span>
 </div>

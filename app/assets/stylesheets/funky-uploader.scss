@@ -131,40 +131,6 @@
       font-weight: 100;
     }
 
-    .file-uploader {
-      width: 200px;
-      margin: 40px 0 40px 390px;
-      button {
-        cursor: pointer;
-        display: inline-block;
-        text-align: center;
-        border: 0px;
-        margin: 0px;
-        text-transform: uppercase;
-        font-size: 12px;
-        height: 25px;
-        vertical-align: middle;
-        height: 25px;
-        padding: 0px 30px;
-        text-decoration: none;
-        font-size: 16px;
-        font-family: Calibri;
-        padding: 0 20px;
-        line-height: 25px;
-        color: #1A678E;
-        @include border-radius(15px);
-        @include inset-box-shadow(0px, 1px, 0px, #72b2d7);
-        @include horizontal-gradient-background(#89dcff, #c2ecff);
-      }
-      button:hover {
-        @include inset-box-shadow(0px, -1px, 0px, #72b2d7);
-        @include horizontal-gradient-background(#c2ecff, #89dcff);
-      }
-      .funky-upload {
-        // display: none;
-      }
-    }
-
     .image-upload-info {
 
       width: 960px;
@@ -273,4 +239,60 @@
     width: 140px;
     height: 140px;
     text-align: center;
+  }
+
+  // Style CSS for Upload Button
+
+  .file-uploader {
+    width: 200px;
+    margin: 40px 0 40px 390px;
+  }
+
+  .funky-upload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+  }
+
+  .fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    border: 0px;
+    margin: 0px;
+    text-transform: uppercase;
+    font-size: 12px;
+    height: 25px;
+    width: 100px;
+    vertical-align: middle;
+    height: 25px;
+    padding: 0px 30px;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Calibri;
+    padding: 0 20px;
+    line-height: 25px;
+    color: #1A678E;
+    @include border-radius(15px);
+    @include inset-box-shadow(0px, 1px, 0px, #72b2d7);
+    @include horizontal-gradient-background(#89dcff, #c2ecff);
+    div.fileUpload:hover {
+      @include inset-box-shadow(0px, -1px, 0px, #72b2d7);
+      @include horizontal-gradient-background(#c2ecff, #89dcff);
+    }
+  }
+
+  .fileUpload input.funky-upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
   }

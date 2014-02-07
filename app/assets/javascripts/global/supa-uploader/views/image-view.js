@@ -1,9 +1,15 @@
 supaUploader.views.ImageView = Backbone.View.extend({
 
   tagName: 'li',
+  id: 'product-image-',
   className: 'product-image',
   template: JST['global/supa-uploader/templates/image'],
   events: {
+    'click .action-icon-holder' : 'deleteImage',
+    'mousedown .uploaded-image' : 'removeMove',
+    'mouseup .uploaded-image' : 'addMove',
+    'dragstart .uploaded-image' : 'deactivateUploader',
+    'dragend .uploaded-image' : 'activateUploader',
   },
 
   initialize: function(){
@@ -46,8 +52,12 @@ supaUploader.views.ImageView = Backbone.View.extend({
     event.preventDefault();
   },
 
-  toggleMove: function(event){
-    $(event.currentTarget.parentNode.parentNode.firstElementChild).toggleClass("hidden");
+  addMove: function(event){
+    $(event.currentTarget.parentNode.parentNode.firstElementChild).addClass("hidden");
+  },
+
+  removeMove: function(event){
+    $(event.currentTarget.parentNode.parentNode.firstElementChild).removeClass('hidden');
   },
 
   deactivateUploader: function(event){
@@ -56,6 +66,7 @@ supaUploader.views.ImageView = Backbone.View.extend({
 
   activateUploader: function(event){
     $('.uploader-holder').attr('id', 'draggable-area');
+        $(event.currentTarget.parentNode.parentNode.firstElementChild).toggleClass("hidden");
   }
 
 });
