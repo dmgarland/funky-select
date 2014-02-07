@@ -13,20 +13,6 @@ supaUploader.views.ImageView = Backbone.View.extend({
   },
 
   initialize: function(){
-     $("#sortable-image-list").sortable({
-      axis: 'x',
-      dropOnEmpty: false,
-      handle: '.move',
-      cursor: 'crosshair',
-      items: 'div.question-row',
-      opacity: 0.4,
-      scroll: true,
-      containment: 'parent',
-      // update: function() {
-      //   calculate_positions('#personalized_product_options .question-row');
-      // }
-    });
-    $("#sortable-image-list").disableSelection();
   },
 
   render: function(){
@@ -39,9 +25,9 @@ supaUploader.views.ImageView = Backbone.View.extend({
   },
 
   deleteImage: function(event){
-    $(event.currentTarget.children[0]).toggleClass('hidden');
-    $(event.currentTarget.children[1]).toggleClass('hidden');
-    $(event.currentTarget.children[2]).attr('value',$(event.currentTarget.children[2]).attr('value') == 'true' ? 'false' : 'true');
+    $(event.currentTarget.children[0]).toggleClass("hidden");
+    $(event.currentTarget.children[1]).toggleClass("hidden");
+    $(event.currentTarget.children[2]).attr("value",$(event.currentTarget.children[2]).attr("value") == "true" ? "false" : "true");
     // NOTE - WIP - looking for smoother way to do it with ID
     $(event.currentTarget.previousElementSibling.children[1]).toggleClass("selected");
     $(event.currentTarget.previousElementSibling.children[1].children).toggleClass("hidden");
@@ -57,16 +43,16 @@ supaUploader.views.ImageView = Backbone.View.extend({
   },
 
   removeMove: function(event){
-    $(event.currentTarget.parentNode.parentNode.firstElementChild).removeClass('hidden');
+    $(event.currentTarget.parentNode.parentNode.firstElementChild).removeClass("hidden");
   },
 
   deactivateUploader: function(event){
-    $('.uploader-holder').removeAttr('id');
+    $('.uploader-holder').removeAttr("id");
   },
 
   activateUploader: function(event){
-    $('.uploader-holder').attr('id', 'draggable-area');
-        $(event.currentTarget.parentNode.parentNode.firstElementChild).toggleClass("hidden");
+    $('.uploader-holder').attr("id", "draggable-area");
+    $(event.currentTarget.parentNode.parentNode.firstElementChild).toggleClass("hidden");
   }
 
 });

@@ -21,23 +21,23 @@
       var _this = this;
       // Maybe will be refactored, just Batman knows.
       // Attached to the document on initialize, not possibility to attach them within this view, wouldn't work.
-      $(document).on('dragenter', function(event) {
+      $(document).on("dragenter", function(event) {
         _this.stopDragDrop(event);
       });
 
-      $(document).on('dragleave', function(event){
+      $(document).on("dragleave", function(event){
         _this.stopDragDrop(event);
         $(".file-image").removeClass("hidden");
         $(".uploader-holder").removeClass("user-over-draggable-area");
       });
 
-      $(document).on('dragover', function(event) {
+      $(document).on("dragover", function(event) {
         _this.stopDragDrop(event);
         $(".file-image").addClass("hidden");
         $(".uploader-holder").addClass("user-over-draggable-area");
       });
 
-      $(document).on('drop', function(event) {
+      $(document).on("drop", function(event) {
         _this.stopDragDrop(event);
       });
     },
@@ -95,7 +95,6 @@
         if (file.name == response.upload_file_name && file.size === response.upload_file_size){
           queue.pop(i, 0)
         }
-        console.log(queue);
       });
     },
 
@@ -112,7 +111,7 @@
     renderImage: function(model, response, _this){
       var image = new supaUploader.models.Image();
       var view = new supaUploader.views.ImageView({ model: model });
-      _this.$el.find(".image-list").append(view.render().el);
+      _this.$el.find("#sortable-image-list").append(view.render().el);
     },
 
     renderMultipleImages: function(model, response, _this){
@@ -123,11 +122,11 @@
 
     uploadFile: function(file, _this) {
       var form_data = new FormData();
-      form_data.append('file', file);
-      form_data.append('uuid', $("#product_uuid").val());
+      form_data.append("file", file);
+      form_data.append("uuid", $("#product_uuid").val());
 
       var ProductId = $("#product_id").val();
-      form_data.append('id', ProductId);
+      form_data.append("id", ProductId);
 
       _this.model.save(file,
                       { data: form_data,
@@ -146,9 +145,8 @@
     },
 
     // ATTN: Not needing this right now
-
     getUrl: function(){
-      return $(".funky-upload").data('url');
+      return $(".funky-upload").data("url");
     }
 
   });

@@ -22,14 +22,13 @@ supaUploader.views.ImageListView = Backbone.View.extend({
     });
 
     this.$el.html(template_html);
-
     return this;
   },
 
   deleteImage: function(event){
-    $(event.currentTarget.children[0]).toggleClass('hidden');
-    $(event.currentTarget.children[1]).toggleClass('hidden');
-    $(event.currentTarget.children[2]).attr('value',$(event.currentTarget.children[2]).attr('value') == 'true' ? 'false' : 'true');
+    $(event.currentTarget.children[0]).toggleClass("hidden");
+    $(event.currentTarget.children[1]).toggleClass("hidden");
+    $(event.currentTarget.children[2]).attr("value",$(event.currentTarget.children[2]).attr("value") == "true" ? "false" : "true");
     // NOTE - WIP - looking for smoother way to do it with ID
     $(event.currentTarget.previousElementSibling.children[1]).toggleClass("selected");
     $(event.currentTarget.previousElementSibling.children[1].children).toggleClass("hidden");
@@ -45,16 +44,16 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   },
 
   removeMove: function(event){
-    $(event.currentTarget.parentNode.parentNode.firstElementChild).removeClass('hidden');
+    $(event.currentTarget.parentNode.parentNode.firstElementChild).removeClass("hidden");
   },
 
   deactivateUploader: function(event){
-    $('.uploader-holder').removeAttr('id');
+    $(".uploader-holder").removeAttr("id");
   },
 
   activateUploader: function(event){
-    $('.uploader-holder').attr('id', 'draggable-area');
-        $(event.currentTarget.parentNode.parentNode.firstElementChild).toggleClass("hidden");
+    $(".uploader-holder").attr("id", "draggable-area");
+    $(event.currentTarget.parentNode.parentNode.firstElementChild).toggleClass("hidden");
   }
 
 });
