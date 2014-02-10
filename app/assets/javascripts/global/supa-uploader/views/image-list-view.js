@@ -45,7 +45,6 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   },
 
   removeMove: function(event){
-    console.log("hi");
     $(event.currentTarget.parentNode.parentNode).find(".move-uploaded-image").addClass("hidden");
     $(event.currentTarget.parentNode.parentNode).find(".lock-over-not-allowed-image").removeClass("hidden");
   },

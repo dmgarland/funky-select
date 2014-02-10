@@ -128,21 +128,27 @@
 
     product_image_allowance: function(template){
       var product_image_allowance = parseInt($("#product_image_allowance").val());
-      var selector = 'ul.#sortable-image-list li';
+      var selector = "ul.#sortable-image-list li";
 
       $(selector).each(function(index) {
-        $(template).find('input[id$=position]').val(index + 1);
+        $(template).find("input[id$=position]").val(index + 1);
         if (index >= product_image_allowance){
-          $(this).find('img.uploaded-image').addClass("image-not-allowed");
-          $(this).find('img.lock-over-not-allowed-image').removeClass('hidden');
-          $(this).find('img.uploaded-image').attr("not-allowed", "true");
+          $(this).find("img.uploaded-image").addClass("image-not-allowed");
+          $(this).find("img.lock-over-not-allowed-image").removeClass("hidden");
+          $(this).find("img.uploaded-image").attr("not-allowed", "true");
         }else{
-          $(this).find('img.uploaded-image').removeClass("image-not-allowed");
-          $(this).find('img.lock-over-not-allowed-image').addClass('hidden');
-          $(this).find('img.uploaded-image').attr("not-allowed", "false");
+          $(this).find("img.uploaded-image").removeClass("image-not-allowed");
+          $(this).find("img.lock-over-not-allowed-image").addClass("hidden");
+          $(this).find("img.uploaded-image").attr("not-allowed", "false");
         }
       });
 
+    },
+
+    loadingSpinner: function(){
+      $(".loader-holder").fadeOut('slow', function() {
+        $(this).toggleClass("hidden");
+      });
     },
 
     uploadFile: function(file, _this) {
@@ -154,6 +160,8 @@
       var ProductId = $("#product_id").val();
       form_data.append("id", ProductId);
 
+      _this.loadingSpinner();
+
       _this.model.save(file,
                       {
                         data: form_data,
@@ -163,6 +171,7 @@
                         success: function(model, response){
                           _this.deleteFromQueue(response, model);
                           _this.renderImage(model, response, _this);
+                          _this.loadingSpinner();
                         },
                         error: function(error){
                           console.log(error);
