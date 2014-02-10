@@ -324,22 +324,23 @@
     }
   }
 
-  #loader {
+  #loader-spinner {
     width: 100px;
     height: 50px;
     position: relative;
     margin: 0 auto 0;
   }
 
-  .stick {
+   .stick-ball {
     width: 50px;
     height: 6px;
     position: absolute;
     top: 23px;
   }
 
-  .left {
+  .left-ball {
     left: 8px;
+
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -o-transform: rotate(180deg);
@@ -442,7 +443,7 @@
 
   }
 
-  .right {
+  .right-ball {
     right: 8px;
 
     -webkit-animation: right 1.7s infinite;
@@ -541,7 +542,7 @@
 
   }
 
-  .right span,.left span {
+  .right-ball span,.left-ball span {
     width: 10px;
     height: 10px;
     background: black;
@@ -549,7 +550,7 @@
     display: block;
   }
 
-  .left span {
+  .left-ball span {
     background: #715B6C;
   }
 
