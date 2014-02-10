@@ -43,7 +43,6 @@
     },
 
     render: function(){
-
       var _this = this;
       this.$el.html(this.template());
 
@@ -113,6 +112,8 @@
       var view = new supaUploader.views.ImageView({ model: model });
       _this.$el.find("#sortable-image-list").append(view.render().el);
       _this.activateSubmit(_this);
+      var template = $(_this.el).find("ul");
+      this.product_image_allowance(template);
     },
 
     renderMultipleImages: function(model, response, _this){
@@ -121,6 +122,25 @@
       var view = new supaUploader.views.ImageListView({ model: model });
       _this.$el.find(".uploader-holder").prepend(view.render().el);
       _this.activateSubmit(_this);
+      var template = $(_this.el).find("ul")
+      this.product_image_allowance(template);
+    },
+
+    product_image_allowance: function(template){
+      var product_image_allowance = parseInt($("#product_image_allowance").val());
+      var selector = 'ul.#sortable-image-list li';
+
+      $(selector).each(function(index) {
+        $(template).find('input[id$=position]').val(index + 1);
+        if (index >= product_image_allowance){
+          $(this).find('img.uploaded-image').addClass("image-not-allowed");
+          $(this).find('img.lock-over-not-allowed-image').removeClass('hidden');
+        }else{
+          $(this).find('img.uploaded-image').removeClass("image-not-allowed");
+          $(this).find('img.lock-over-not-allowed-image').addClass('hidden');
+        }
+      });
+
     },
 
     uploadFile: function(file, _this) {
@@ -142,9 +162,9 @@
                           _this.deleteFromQueue(response, model);
                           _this.renderImage(model, response, _this);
                         },
-                      error: function(error){
-                        console.log(error);
-                      }
+                        error: function(error){
+                          console.log(error);
+                        }
       });
     },
 

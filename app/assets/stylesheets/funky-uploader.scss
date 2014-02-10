@@ -197,7 +197,7 @@
   }
 
   .action-icon-holder {
-    z-index: 20;
+    z-index: 40;
     position: relative;
     float: left;
     margin: 93% 0 0 10px;
@@ -217,7 +217,8 @@
   }
 
   .layer-over-image {
-    position:absolute;
+    z-index: 20;
+    position: absolute;
     top:100%;
     left:0;
     display:block;
@@ -231,7 +232,7 @@
     background:rgba(255,0,37,0.5);
   }
 
-  .selected {
+  .selected-to-destroy {
     top:0;
   }
 
@@ -295,4 +296,15 @@
     opacity: 0;
     filter: alpha(opacity=0);
 
+  }
+
+  .lock-over-not-allowed-image {
+    z-index: 20;
+    position: absolute;
+    margin: 38% 0 0 8%;
+  }
+
+  .image-not-allowed {
+    opacity:0.4;
+    filter:alpha(opacity=40);
   }
