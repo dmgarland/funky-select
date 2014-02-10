@@ -6,6 +6,8 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   template: JST['global/supa-uploader/templates/image-list'],
   events: {
     'click .action-icon-holder' : 'deleteImage',
+    'mousedown .layer-over-image' : 'addMove',
+    'mouseup .layer-over-image' : 'removeMove',
     'mousedown .uploaded-image' : 'addMove',
     'mouseup .uploaded-image' : 'removeMove',
     'mousedown .lock-over-not-allowed-image' : 'addMove',
@@ -43,13 +45,24 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   },
 
   removeMove: function(event){
+    console.log("hi");
     $(event.currentTarget.parentNode.parentNode).find(".move-uploaded-image").addClass("hidden");
     $(event.currentTarget.parentNode.parentNode).find(".lock-over-not-allowed-image").removeClass("hidden");
   },
 
   addMove: function(event){
-    $(event.currentTarget.parentNode.parentNode).find(".move-uploaded-image").removeClass("hidden");
-    $(event.currentTarget.parentNode.parentNode).find(".lock-over-not-allowed-image").addClass("hidden");
+    if ($(event.currentTarget.parentNode).find(".lock-over-not-allowed-image").attr("class") == "lock-over-not-allowed hidden"){
+
+      $(event.currentTarget.parentNode).find(".lock-over-not-allowed-image").addClass("hidden");
+      $(event.currentTarget.parentNode.parentNode).find(".move-uploaded-image").removeClass("hidden");
+      $(event.currentTarget.parentNode.parentNode).find(".lock-over-not-allowed-image").addClass("hidden");
+
+    }else{
+
+      $(event.currentTarget.parentNode.parentNode).find(".move-uploaded-image").removeClass("hidden");
+      $(event.currentTarget.parentNode.parentNode).find(".lock-over-not-allowed-image").addClass("hidden");
+    }
+
   },
 
   deactivateUploader: function(event){

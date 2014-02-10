@@ -135,9 +135,11 @@
         if (index >= product_image_allowance){
           $(this).find('img.uploaded-image').addClass("image-not-allowed");
           $(this).find('img.lock-over-not-allowed-image').removeClass('hidden');
+          $(this).find('img.uploaded-image').attr("not-allowed", "true");
         }else{
           $(this).find('img.uploaded-image').removeClass("image-not-allowed");
           $(this).find('img.lock-over-not-allowed-image').addClass('hidden');
+          $(this).find('img.uploaded-image').attr("not-allowed", "false");
         }
       });
 
