@@ -60,6 +60,12 @@
     box-shadow: inset 0 0 200px #854371;
   }
 
+  /* sets priority */
+  .uploaded-image {
+    height: 65%;
+    margin-top: 33px;
+  }
+
   .uploader-holder {
     z-index: 2;
     background-color: #f1e9ef;
@@ -222,9 +228,9 @@
     top:100%;
     left:0;
     display:block;
-    width:195px; /* as image */
-    height:195px; /* as image */
-    line-height:195px; /* as image */
+    width:195px;
+    height:195px;
+    line-height:195px;
     text-align:center;
     text-decoration:none;
     color:black;
@@ -267,7 +273,7 @@
     text-transform: uppercase;
     font-size: 12px;
     height: 38px;
-    width: 154px;
+    width: 134px;
     vertical-align: middle;
     padding: 0px 30px;
     text-decoration: none;
@@ -275,8 +281,9 @@
     font-family: Calibri;
     padding: 0 20px;
     line-height: 38px;
-    color: #1A678E;
-    @include border-radius(15px);
+    color: #009dd6;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+    @include border-radius(30px);
     @include inset-box-shadow(0px, 1px, 0px, #72b2d7);
     @include horizontal-gradient-background(#89dcff, #c2ecff);
     &:hover {
