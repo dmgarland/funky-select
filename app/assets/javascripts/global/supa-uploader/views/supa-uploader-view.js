@@ -9,7 +9,8 @@
     template: JST['global/supa-uploader/templates/supa-uploader'],
     events: {
       'change .funky-upload' : 'normalUploader',
-      'drop #draggable-area' : 'draggableUploader'
+      'drop #draggable-area' : 'draggableUploader',
+      'dragover .file-image' : 'removeFileImage'
     },
 
     initialize: function(){
@@ -56,6 +57,10 @@
       });
 
       return this;
+    },
+
+    removeFileImage: function(){
+      $(".file-image").addClass("hidden");
     },
 
     draggableUploader: function(event){

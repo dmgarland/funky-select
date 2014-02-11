@@ -20,7 +20,6 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   },
 
   render: function(){
-    $(".file-image").addClass("hidden");
     var template_html = this.template({
       images: this.model.attributes
     });
