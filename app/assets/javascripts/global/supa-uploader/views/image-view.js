@@ -9,12 +9,10 @@ supaUploader.views.ImageView = Backbone.View.extend({
   events: {
   },
 
-  initialize: function(){
-  },
-
   render: function(){
     var template_html = this.template({
-      image: this.model.attributes
+      image: this.model.attributes,
+      allowed: this.model.allowed()
     });
 
     this.$el.html(template_html);
