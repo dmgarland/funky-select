@@ -1,0 +1,22 @@
+<% _.each(images, function(image){ %>
+  <% _.each(image, function(img, i){ %>
+    <li id="product-image-<%= img.id %>" class="product-image">
+      <div id="image-container-<%= img.id %>" class="image-container">
+      <a class="layer-over-image" href="#"><!-- <p class="restore-info hidden">THIS IMAGE WILL BE DELETED ON SAVE! </br> CHANGE YOUR MIND? </br>CLICK TO RE-INSTATE</p> --></a>
+      <img alt="Move" class="move-uploaded-image hidden" src="/assets/admin/move.png" title="Move Photo" />
+      <img alt="Lock" class="lock-over-not-allowed-image hidden" src="/assets/admin/lock.png" title="Promote your account!" />
+        <div class="background">
+          <p> </p>
+          <img alt="<%= img.upload_file_name %>" src="<%= img.image_url %>" class="uploaded-image" />
+        </div>
+        <span class="action-icon-holder">
+          <img alt="Delete" class="delete" src="/assets/admin/delete-233a1da230f816839e11e931bcd5d2f5.png" title="Delete Photo" />
+          <img alt="Restore" class="restore hidden" src="/assets/admin/undelete-bd3abe6ffac1fec8d8b7b1857c49e9ee.png" title="Restore Photo" />
+          <input id="product_images_attributes_<%= i %>__destroy" class="destroy-image-field" name="product[images_attributes][<%= i %>][_destroy]" type="hidden" value="false">
+          <input id="product_images_attributes_<%= i %>_position" name="product[images_attributes][<%= i %>][position]" type="hidden" value="<%= i %>">
+          <input id="product_images_attributes_<%= i %>_id" name="product[images_attributes][<%= i %>][id]" type="hidden" value="<%= img.id %>">
+        </span>
+      </div>
+    </li>
+  <% }) %>
+<% }) %>

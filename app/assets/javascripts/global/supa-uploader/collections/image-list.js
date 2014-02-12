@@ -2,20 +2,12 @@ supaUploader.collections.ImageList = Backbone.Collection.extend({
 
   model: supaUploader.models.Image,
   url: function(){
-    return '/admin/products/createSupaImage.js';
+    return '/admin/product_images/'+ this.product_id +'.js';
   },
 
-  initialize: function(){
-
-  },
-
-  render: function(){
-    var template_html = this.template({
-      image: this.model.attributes
-    });
-
-    this.$el.html(template_html);
-    return this;
+  parse: function(response){
+    var _this = this;
+    return response;
   }
 
 });
