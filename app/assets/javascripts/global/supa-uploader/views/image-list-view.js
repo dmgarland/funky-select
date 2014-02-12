@@ -64,14 +64,14 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   removeMove: function(event){
     $(event.currentTarget).find(".move-uploaded-image").addClass("hidden");
 
-    if ($(event.currentTarget).find(".uploaded-image").attr("not-allowed") == "true"){
+    if ($(event.currentTarget).find(".uploaded-image").data("not-allowed") == "true"){
       $(event.currentTarget).find(".lock-over-not-allowed-image").removeClass("hidden");
     }
   },
 
   addMove: function(event){
     $(event.currentTarget).find(".move-uploaded-image").removeClass("hidden");
-    $(event.currentTarget).find(".lock-over-not-allowed-image").addClass("hidden");s
+    $(event.currentTarget).find(".lock-over-not-allowed-image").addClass("hidden");
   },
 
   deactivateUploader: function(event){
@@ -90,13 +90,13 @@ supaUploader.views.ImageListView = Backbone.View.extend({
     $(this.el).find("li").each(function(index) {
       $(this.el).find("input[id$=position]").val(index + 1);
       if (index >= _this.imageLimit){
-        $(this).find("img.uploaded-image").addClass("image-not-allowed");
-        $(this).find("img.lock-over-not-allowed-image").removeClass("hidden");
-        $(this).find("img.uploaded-image").attr("not-allowed", "true");
+        $(this).find(".uploaded-image").addClass("image-not-allowed");
+        $(this).find(".lock-over-not-allowed-image").removeClass("hidden");
+        $(this).find(".uploaded-image").data("not-allowed", "true");
       }else{
-        $(this).find("img.uploaded-image").removeClass("image-not-allowed");
-        $(this).find("img.lock-over-not-allowed-image").addClass("hidden");
-        $(this).find("img.uploaded-image").attr("not-allowed", "false");
+        $(this).find(".uploaded-image").removeClass("image-not-allowed");
+        $(this).find(".lock-over-not-allowed-image").addClass("hidden");
+        $(this).find(".uploaded-image").data("not-allowed", "false");
       }
     });
   }

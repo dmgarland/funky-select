@@ -69,12 +69,12 @@
   .uploaded-image {
     display: block;
     position: absolute;
-    max-width:195px;
-    max-height:195px;
-    width: auto;
-    height: auto;
-    margin: auto auto;
-    vertical-align: middle;
+    background-size: auto 195px;
+    background-repeat: no-repeat;
+    width: 170px;
+    height:195px;
+    margin: 0 auto;
+    background-position: center center;
   }
 
   .uploader-holder {
