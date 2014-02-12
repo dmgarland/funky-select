@@ -14,10 +14,7 @@
     },
 
     initialize: function(){
-      this.collection = new supaUploader.collections.ImageList();
 
-      var ProductId = $("#product_id").val();
-      this.collection.product_id = ProductId;
 
       var _this = this;
       // Maybe will be refactored, just Batman knows.
@@ -55,12 +52,13 @@
       var _this = this;
       this.$el.html(this.template());
 
-      this.collection.fetch({
-        success: function(models) {
-          var imageListView = new supaUploader.views.ImageListView({
-            collection: models
-          });
+      // TODO - store on this?
+      imageListView = new supaUploader.views.ImageListView();
 
+      // TODO maybe put in initialize
+      imageListView.collection.fetch({
+        success: function(models) {
+         // _this.collection.reset(models);
           _this.$el.find("#images-view").html(imageListView.render().el);
         }
       });
@@ -131,15 +129,15 @@
     //   this.product_image_allowance(template);
     // },
 
-    renderMultipleImages: function(model, response, _this){
-      $("#sortable-image-list").remove();
-      var image = new supaUploader.models.Image();
-      var view = new supaUploader.views.ImageListView({ model: model });
-      _this.$el.find(".uploader-holder").prepend(view.render().el);
-      _this.activateSubmit(_this);
-      var template = $(_this.el).find("ul")
-      this.product_image_allowance(template);
-    },
+    // renderMultipleImages: function(model, response, _this){
+    //   $("#sortable-image-list").remove();
+    //   var image = new supaUploader.models.Image();
+    //   var view = new supaUploader.views.ImageListView({ model: model });
+    //   _this.$el.find(".uploader-holder").prepend(view.render().el);
+    //   _this.activateSubmit(_this);
+    //   var template = $(_this.el).find("ul")
+    //   this.product_image_allowance(template);
+    // },
 
     product_image_allowance: function(template){
       var product_image_allowance = parseInt($("#product_image_allowance").val());
@@ -160,8 +158,7 @@
     },
 
     loadingSpinner: function(){
-      $(".loader-holder").fadeOut("slow", function() {
-        $(this).toggleClass("hidden");
+        $(".loader-holder").fadeToggle("slow", function() {
       });
     },
 
@@ -183,8 +180,9 @@
                         processData: false,
                         success: function(model, response){
                           _this.deleteFromQueue(response, model);
-                          _this.collection.add(model);
+                          imageListView.collection.add(model.attributes);
                           _this.loadingSpinner();
+                          _this.activateSubmit();
                         },
                         error: function(error){
                           console.log(error);

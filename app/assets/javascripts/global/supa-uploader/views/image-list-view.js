@@ -17,24 +17,24 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   },
 
   initialize: function(){
+    this.collection = new supaUploader.collections.ImageList();
+
+    var ProductId = $("#product_id").val();
+    this.collection.product_id = ProductId;
+
     this.listenTo(this.collection, 'add', this.render);
-    this.listenTo(this.collection, 'reset', this.render);
   },
 
   render: function(){
-    // var template_html = this.template({
-    //   images: this.model.attributes
-    // });
-
     var _this = this;
+    _this.$el.html("");
 
     _.each(_this.collection.models, function(image, i) {
       image.set('position', i);
-      var imageView = new supaUploader.views.ImageView({ model: image});
+      var imageView = new supaUploader.views.ImageView({ model: image });
       _this.$el.append(imageView.render().el);
     });
 
-    // this.$el.html(template_html);
     return this;
   },
 
