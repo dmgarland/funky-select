@@ -24,29 +24,36 @@
       // Attached to the document on initialize, not possibility to attach them within this view, wouldn't work.
       $(document).on("dragenter", function(event) {
         _this.stopDragDrop(event);
+        $(".file-image").fadeOut("slow", function() {
+          $(this).addClass("hidden");
+        });
       });
 
       $(document).on("dragleave", function(event){
         _this.stopDragDrop(event);
-        $(".file-image").removeClass("hidden");
+        $(".file-image").fadeOut("slow", function() {
+          $(this).removeClass("hidden");
+        });
         $(".uploader-holder").removeClass("user-over-draggable-area");
       });
 
       $(document).on("dragover", function(event) {
         _this.stopDragDrop(event);
-        $(".file-image").addClass("hidden");
         $(".uploader-holder").addClass("user-over-draggable-area");
       });
 
       $(document).on("drop", function(event) {
         _this.stopDragDrop(event);
+
+        $(".file-image").fadeOut("slow", function() {
+          $(this).removeClass("hidden");
+        });
       });
     },
 
     render: function(){
       var _this = this;
       this.$el.html(this.template());
-
       this.collection.fetch(
       {
         success: function(models, response){
@@ -55,11 +62,11 @@
           });
         }
       });
-
       return this;
     },
 
     removeFileImage: function(){
+      //here is the animation
       $(".file-image").addClass("hidden");
     },
 
@@ -147,17 +154,15 @@
           $(this).find("img.uploaded-image").attr("not-allowed", "false");
         }
       });
-
     },
 
     loadingSpinner: function(){
-      $(".loader-holder").fadeOut('slow', function() {
+      $(".loader-holder").fadeOut("slow", function() {
         $(this).toggleClass("hidden");
       });
     },
 
     uploadFile: function(file, _this) {
-
       var form_data = new FormData();
       form_data.append("file", file);
       form_data.append("uuid", $("#product_uuid").val());
