@@ -3,7 +3,7 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   tagName: 'ul',
   className: 'image-list',
   id: 'sortable-image-list',
-  template: JST['global/supa-uploader/templates/image-list'],
+  // template: JST['global/supa-uploader/templates/image'],
   events: {
     'click .action-icon-holder' : 'deleteImage',
     'mousedown .layer-over-image' : 'addMove',
@@ -13,18 +13,28 @@ supaUploader.views.ImageListView = Backbone.View.extend({
     'mousedown .lock-over-not-allowed-image' : 'addMove',
     'mouseup .lock-over-not-allowed-image' : 'removeMove',
     'dragstart .uploaded-image' : 'deactivateUploader',
-    'dragend .uploaded-image' : 'activateUploader',
+    'dragend .uploaded-image' : 'activateUploader'
   },
 
   initialize: function(){
+    this.listenTo(this.collection, 'add', this.render);
+    this.listenTo(this.collection, 'reset', this.render);
   },
 
   render: function(){
-    var template_html = this.template({
-      images: this.model.attributes
+    // var template_html = this.template({
+    //   images: this.model.attributes
+    // });
+
+    var _this = this;
+
+    _.each(_this.collection.models, function(image, i) {
+      image.set('position', i);
+      var imageView = new supaUploader.views.ImageView({ model: image});
+      _this.$el.append(imageView.render().el);
     });
 
-    this.$el.html(template_html);
+    // this.$el.html(template_html);
     return this;
   },
 

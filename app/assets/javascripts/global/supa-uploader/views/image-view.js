@@ -1,7 +1,9 @@
 supaUploader.views.ImageView = Backbone.View.extend({
 
   tagName: 'li',
-  id: 'product-image-',
+  id: function(){
+    return 'product-image-'+ this.model.id;
+  },
   className: 'product-image',
   template: JST['global/supa-uploader/templates/image'],
   events: {

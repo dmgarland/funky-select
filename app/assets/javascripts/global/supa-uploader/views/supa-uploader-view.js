@@ -54,14 +54,17 @@
     render: function(){
       var _this = this;
       this.$el.html(this.template());
-      this.collection.fetch(
-      {
-        success: function(models, response){
-          models.forEach(function(model){
-            _this.renderMultipleImages(model, response, _this);
+
+      this.collection.fetch({
+        success: function(models) {
+          var imageListView = new supaUploader.views.ImageListView({
+            collection: models
           });
+
+          _this.$el.find("#images-view").html(imageListView.render().el);
         }
       });
+
       return this;
     },
 
@@ -119,14 +122,14 @@
       $(":submit").attr("id", "submit_data_button").removeAttr("disabled");
     },
 
-    renderImage: function(model, response, _this){
-      var image = new supaUploader.models.Image();
-      var view = new supaUploader.views.ImageView({ model: model });
-      _this.$el.find("#sortable-image-list").append(view.render().el);
-      _this.activateSubmit(_this);
-      var template = $(_this.el).find("ul");
-      this.product_image_allowance(template);
-    },
+    // renderImage: function(model, response, _this){
+    //   var image = new supaUploader.models.Image();
+    //   var view = new supaUploader.views.ImageView({ model: model });
+    //   _this.$el.find("#sortable-image-list").append(view.render().el);
+    //   _this.activateSubmit(_this);
+    //   var template = $(_this.el).find("ul");
+    //   this.product_image_allowance(template);
+    // },
 
     renderMultipleImages: function(model, response, _this){
       $("#sortable-image-list").remove();
@@ -180,7 +183,7 @@
                         processData: false,
                         success: function(model, response){
                           _this.deleteFromQueue(response, model);
-                          _this.renderImage(model, response, _this);
+                          _this.collection.add(model);
                           _this.loadingSpinner();
                         },
                         error: function(error){
