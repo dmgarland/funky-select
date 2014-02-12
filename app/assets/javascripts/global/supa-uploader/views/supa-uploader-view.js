@@ -185,6 +185,9 @@
                         },
                         error: function(error){
                           console.log(error);
+                        },
+                        xhrFields: {
+                          onprogress: this.onProgress
                         }
       });
     },
@@ -192,7 +195,13 @@
     // ATTN: Not needing this right now
     getUrl: function(){
       return $(".funky-upload").data("url");
+    },
+
+    onProgress: function(e) {
+      var percent = Math.round(e.loaded / e.total * 100);
+      console.log(""+ percent + "% complete.");
     }
+
   });
 
 })();
