@@ -1,6 +1,7 @@
 // Hammer time, dance dance!
 (function () {
   var queue = [];
+  var imageListView;
 
   supaUploader.views.supaUploaderView = Backbone.View.extend({
 
