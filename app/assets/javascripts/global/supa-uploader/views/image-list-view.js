@@ -51,7 +51,11 @@ supaUploader.views.ImageListView = Backbone.View.extend({
 
     $(event.currentTarget.parentNode).find(".layer-over-image").toggleClass("selected-to-destroy");
 
-    $(event.currentTarget.parentNode).addClass("red-border");
+    if ($(event.currentTarget.parentNode).css("border") != "1px solid rgb(255, 0, 0)"){
+      $(event.currentTarget.parentNode).css("border", "1px solid red");
+    }else{
+      $(event.currentTarget.parentNode).css("border", "1px solid #d0bacc");
+    }
   },
 
   stopDragDrop: function(event){
