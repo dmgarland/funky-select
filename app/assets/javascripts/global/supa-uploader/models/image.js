@@ -5,7 +5,7 @@ supaUploader.models.Image = Backbone.Model.extend({
   },
 
   allowed: function() {
-    return this.get('position') > parseInt($("#product_image_allowance").val()) - 1;
+    return this.get('position') > parseInt($("#product_image_allowance").val());
   }
 
 });

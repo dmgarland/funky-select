@@ -55,7 +55,6 @@
       // TODO maybe put in initialize
       imageListView.collection.fetch({
         success: function(models) {
-         // _this.collection.reset(models);
           _this.$el.find("#images-view").html(imageListView.render().el);
         }
       });
