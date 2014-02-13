@@ -1,6 +1,7 @@
 // Hammer time, dance dance!
 (function () {
   var queue = [];
+  var imageListView;
 
   supaUploader.views.supaUploaderView = Backbone.View.extend({
 
@@ -18,16 +19,13 @@
 
       $(document).on("dragenter", function(event) {
         _this.stopDragDrop(event);
-        $(".file-image").fadeOut("slow", function() {
+        $(".file-image").fadeOut("400", function() {
           $(this).addClass("hidden");
         });
       });
 
       $(document).on("dragleave", function(event){
         _this.stopDragDrop(event);
-        $(".file-image").fadeOut("slow", function() {
-          $(this).removeClass("hidden");
-        });
         $(".uploader-holder").removeClass("user-over-draggable-area");
       });
 
@@ -38,10 +36,6 @@
 
       $(document).on("drop", function(event) {
         _this.stopDragDrop(event);
-
-        $(".file-image").fadeOut("slow", function() {
-          $(this).removeClass("hidden");
-        });
       });
     },
 
@@ -56,6 +50,7 @@
       imageListView.collection.fetch({
         success: function(models) {
           _this.$el.find("#images-view").html(imageListView.render().el);
+          $(".file-image").addClass("hidden");
         }
       });
 

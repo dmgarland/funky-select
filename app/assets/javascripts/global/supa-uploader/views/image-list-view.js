@@ -50,6 +50,8 @@ supaUploader.views.ImageListView = Backbone.View.extend({
     destroyField.attr("value", destroyField.attr("value") == "true" ? "false" : "true");
 
     $(event.currentTarget.parentNode).find(".layer-over-image").toggleClass("selected-to-destroy");
+
+    $(event.currentTarget.parentNode).addClass("red-border");
   },
 
   stopDragDrop: function(event){
