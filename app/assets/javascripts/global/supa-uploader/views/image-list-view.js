@@ -86,13 +86,13 @@ supaUploader.views.ImageListView = Backbone.View.extend({
     _.each(listElements, function(item, index) {
       $(item).find("input[id$=position]").val(index + 1);
       if (index >= _this.imageLimit){
-        $(_this.el).find(".uploaded-image").addClass("image-not-allowed");
-        $(_this.el).find(".lock-over-not-allowed-image").removeClass("hidden");
-        $(_this.el).find(".uploaded-image").data("not-allowed", "true");
+        $(item).find(".uploaded-image").addClass("image-not-allowed");
+        $(item).find(".lock-over-not-allowed-image").removeClass("hidden");
+        $(item).find(".uploaded-image").data("not-allowed", "true");
       }else{
-        $(_this.el).find(".uploaded-image").removeClass("image-not-allowed");
-        $(_this.el).find(".lock-over-not-allowed-image").addClass("hidden");
-        $(_this.el).find(".uploaded-image").data("not-allowed", "false");
+        $(item).find(".uploaded-image").removeClass("image-not-allowed");
+        $(item).find(".lock-over-not-allowed-image").addClass("hidden");
+        $(item).find(".uploaded-image").data("not-allowed", "false");
       }
     });
   }
