@@ -8,6 +8,10 @@ supaUploader.collections.ImageList = Backbone.Collection.extend({
   parse: function(response){
     var _this = this;
     return response;
+  },
+
+  initialize: function() {
+
   }
 
 });
