@@ -9,9 +9,9 @@ class FruitImagesController < ApplicationController
     if params[:fruit_id]
       # attaching to product that already exists
       @fruit = Fruit.find(params[:fruit_id])
-      @image = @fruit.images.create!(uuid: UUID.new.generate)
+      @image = @fruit.images.create!
     else
-      @image = Image.create!(uuid: UUID.new.generate, path: params[:file].tempfile.path)
+      @image = Image.create!(path: params[:file].tempfile.path)
     end
 
     # Let's just set some kind of URL to a sample image; this would normally
