@@ -6,7 +6,7 @@ supaUploader.views.ImageView = Backbone.View.extend({
   },
 
   className: 'product-image',
-  template: JST['global/supa-uploader/templates/image'],
+  template: JST['supa-toolset/supa-uploader/templates/image'],
   events: {
   },
 
