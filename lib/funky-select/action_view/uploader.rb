@@ -18,7 +18,8 @@ module FunkySelect
       def build_data_from_options(options)
         data = {
           :upload_url => options[:upload_url] || upload_url,
-          :images => options[:images] || "[]"
+          :images => options[:images] || "[]",
+          :object_id => @object.id
         }
         data.merge!(:limit => options[:limit]) if options[:limit]
         data

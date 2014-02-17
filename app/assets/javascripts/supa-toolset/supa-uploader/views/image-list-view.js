@@ -12,8 +12,6 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   },
 
   initialize: function(){
-    var ProductId = $("#product_id").val();
-    this.collection.product_id = ProductId;
     this.listenTo(this.collection, 'add', this.render);
   },
 
