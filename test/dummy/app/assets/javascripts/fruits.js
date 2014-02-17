@@ -1,5 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-function uploadComplete(_this){
-  $(_this).closest("form").find("input[type=submit]").removeAttr("disabled");
+function uploadComplete(_this) {
+  console.log("Upload callback complete!");
 }

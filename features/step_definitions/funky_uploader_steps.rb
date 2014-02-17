@@ -3,6 +3,9 @@ Given(/^that I am on a create page for a Fruit with a funky upload$/) do
 end
 
 When(/^I attach the file "(.*?)" and "(.*?)"$/) do |file1, file2|
+  # TODO - shouldn't this be a rails-friendly form name?
+  # attach_file("fruit[image]", File.expand_path(file1))
+  # attach_file("fruit[image]", File.expand_path(file2))
   attach_file("fileUploader", File.expand_path(file1))
   attach_file("fileUploader", File.expand_path(file2))
 end
@@ -12,7 +15,7 @@ When(/^I can not click on the button$/) do
 end
 
 Then(/^I see the images uploaded on the page$/) do
-  assert have_xpath("//img[@src=\"/var/folders\"]")
+  assert page.has_xpath?("//img[@src=\"/assets/beach.jpg\"]")
 end
 
 Then(/^I can click on the button$/) do

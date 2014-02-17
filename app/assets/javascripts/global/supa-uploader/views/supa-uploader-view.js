@@ -5,8 +5,7 @@
 
   supaUploader.views.supaUploaderView = Backbone.View.extend({
 
-    tagName: 'div',
-    className: 'supa-uploader',
+    el: '#funky-upload-container',
     template: JST['global/supa-uploader/templates/supa-uploader'],
     events: {
       'change .funky-upload' : 'normalUploader',
@@ -16,6 +15,9 @@
 
     initialize: function(){
       var _this = this;
+
+      // Pick up methods to use for the URLs etc from Rails
+      supaUploader.image_upload_url = this.$el.data('uploadUrl');
 
       $(document).on("dragenter", function(event) {
         _this.stopDragDrop(event);
@@ -139,6 +141,9 @@
                         },
                         error: function(error){
                           console.log(error);
+                        },
+                        xhrFields: {
+                          onprogress: this.onProgress
                         }
       });
     },
@@ -146,7 +151,13 @@
     // ATTN: Not needing this right now
     getUrl: function(){
       return $(".funky-upload").data("url");
+    },
+
+    onProgress: function(e) {
+      var percent = Math.round(e.loaded / e.total * 100);
+      console.log(""+ percent + "% complete.");
     }
+
   });
 
 })();

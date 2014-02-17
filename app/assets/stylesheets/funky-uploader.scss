@@ -37,15 +37,9 @@
   font-family: CalibriRegular;
 }
 
-.supa-uploader {
-  border: 1px solid black;
+#funky-upload-container {
+  border: 1px solid #f6f1f5;
   text-align: center;
-  margin: 0 auto;
-  width: 960px;
-}
-
-#image-upload-container {
-
   margin: 0 auto;
   width: 960px;
   background-color: #f4edf2;
@@ -267,7 +261,6 @@
   .hidden {
     display: none;
   }
-}
 
 
   .image-container {
@@ -288,6 +281,7 @@
       position: relative;
       margin: 47% 0 0 12%;
     }
+
 
     .layer-over-image {
       z-index: 20;
@@ -345,4 +339,4 @@
       }
     }
   }
-
+}
