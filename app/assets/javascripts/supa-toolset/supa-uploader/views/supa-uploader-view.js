@@ -20,6 +20,7 @@
       supaUploader.image_upload_url = this.$el.data('uploadUrl');
       supaUploader.images = new supaUploader.collections.ImageList()
       supaUploader.images.reset(this.$el.data('images'));
+      supaUploader.imageLimit = parseInt(this.$el.data('limit'));
 
       $(document).on("dragenter", function(event) {
         _this.stopDragDrop(event);
