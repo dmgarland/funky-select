@@ -6,7 +6,7 @@
   supaUploader.views.supaUploaderView = Backbone.View.extend({
 
     el: '#funky-upload-container',
-    template: JST['global/supa-uploader/templates/supa-uploader'],
+    template: JST['supa-toolset/supa-uploader/templates/supa-uploader'],
     events: {
       'change .funky-upload' : 'normalUploader',
       'drop #draggable-area' : 'draggableUploader',
