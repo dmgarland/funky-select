@@ -2,7 +2,7 @@ module FunkySelect
   module ActionView
     module Uploader
 
-      def funky_upload(method, choices = {}, options = {})
+      def funky_upload(method, options = {})
         [
           @template.content_tag(:div, :id => "funky-upload-container",
             :data => {
