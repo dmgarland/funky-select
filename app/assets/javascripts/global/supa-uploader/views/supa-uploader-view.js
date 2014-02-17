@@ -141,7 +141,6 @@
                         processData: false,
                         success: function(model, response){
                           _this.deleteFromQueue(response, model);
-                          imageListView.collection.model = supaUploader.models.Image;
                           imageListView.collection.add(model.attributes);
                           _this.loadingSpinner();
                           _this.activateSubmit();
