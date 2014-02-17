@@ -18,6 +18,8 @@
 
       // Pick up methods to use for the URLs etc from Rails
       supaUploader.image_upload_url = this.$el.data('uploadUrl');
+      supaUploader.images = new supaUploader.collections.ImageList()
+      supaUploader.images.reset(this.$el.data('images'));
 
       $(document).on("dragenter", function(event) {
         _this.stopDragDrop(event);
@@ -46,15 +48,19 @@
       this.$el.html(this.template());
 
       // TODO - store on this?
-      imageListView = new supaUploader.views.ImageListView();
-
+      imageListView = new supaUploader.views.ImageListView({collection: supaUploader.images});
       // TODO maybe put in initialize
-      imageListView.collection.fetch({
-        success: function(models) {
-          _this.$el.find("#images-view").html(imageListView.render().el);
-          $(".file-image").addClass("hidden");
-        }
-      });
+      // imageListView.collection.fetch({
+        // success: function(models) {
+
+      _this.$el.find("#images-view").html(imageListView.render().el);
+      $(".file-image").addClass("hidden");
+
+        // },
+        // error: function(models) {
+          // console.log("TODO- Write a decent error message");
+        // }
+      // });
 
       return this;
     },
@@ -135,6 +141,7 @@
                         processData: false,
                         success: function(model, response){
                           _this.deleteFromQueue(response, model);
+                          imageListView.collection.model = supaUploader.models.Image;
                           imageListView.collection.add(model.attributes);
                           _this.loadingSpinner();
                           _this.activateSubmit();
