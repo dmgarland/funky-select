@@ -18,7 +18,7 @@
 
 <div class="field">
   <%= f.label :image %><br />
-  <%= f.funky_upload :image, :images => @fruit.images.to_json  %>
+  <%= f.funky_upload :image, :images => @fruit.images.to_json, :limit => 1  %>
 </div>
 
   <div class="actions">

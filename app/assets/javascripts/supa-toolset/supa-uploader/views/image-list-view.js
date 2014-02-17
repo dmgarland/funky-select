@@ -14,7 +14,6 @@ supaUploader.views.ImageListView = Backbone.View.extend({
   initialize: function(){
     var ProductId = $("#product_id").val();
     this.collection.product_id = ProductId;
-    this.imageLimit = parseInt($("#product_image_allowance").val());
     this.listenTo(this.collection, 'add', this.render);
   },
 
@@ -90,7 +89,7 @@ supaUploader.views.ImageListView = Backbone.View.extend({
     var listElements = $(this.el).find("li");
     _.each(listElements, function(item, index) {
       $(item).find("input[id$=position]").val(index + 1);
-      if (index >= _this.imageLimit){
+      if (index >= supaUploader.imageLimit){
         $(item).find(".uploaded-image").addClass("image-not-allowed");
         $(item).find(".lock-over-not-allowed-image").removeClass("hidden");
         $(item).find(".uploaded-image").data("not-allowed", "true");
