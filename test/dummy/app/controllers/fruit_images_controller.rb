@@ -1,7 +1,7 @@
 class FruitImagesController < ApplicationController
 
   def index
-    render :json => Image.all
+    render :json => Image.all.to_json(:only => [:id, :uuid])
   end
 
   def create
