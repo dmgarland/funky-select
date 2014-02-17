@@ -1,5 +1,9 @@
 class FruitImagesController < ApplicationController
 
+  def index
+    render :json => Image.all
+  end
+
   def create
     upload = params[:upload]
     if params[:fruit_id]
