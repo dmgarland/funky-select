@@ -202,6 +202,7 @@ DEPENDENCIES
   jeweler (~> 2.0.0)
   jquery-rails (= 2.0.1)
   launchy
+  macaddr (< 1.6.2)
   pry
   rails (= 3.2.11)
   rdoc (~> 3.12)

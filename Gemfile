@@ -7,6 +7,8 @@ gem 'coffee-rails', '3.2.2'
 gem 'underscore-rails'
 gem 'uuid'
 gem 'ejs'
+gem 'macaddr', '< 1.6.2'
+
 
 group :development, :test do
   gem "rdoc", "~> 3.12"
