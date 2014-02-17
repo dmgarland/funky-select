@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Dan Garland"]
-  s.date = "2014-02-05"
+  s.date = "2014-02-17"
   s.description = "A custom drop-down list with styles, used on the SupaDupa project"
   s.email = "dan@dangarland.co.uk"
   s.extra_rdoc_files = [
@@ -33,12 +33,12 @@ Gem::Specification.new do |s|
     "app/assets/javascripts/boot.js",
     "app/assets/javascripts/funky-select.js.coffee",
     "app/assets/javascripts/funky-toolset.js",
-    "app/assets/javascripts/funky-uploader.js",
     "app/assets/javascripts/global/supa-uploader/collections/image-list.js",
     "app/assets/javascripts/global/supa-uploader/models/image.js",
     "app/assets/javascripts/global/supa-uploader/supa-uploader.js",
     "app/assets/javascripts/global/supa-uploader/templates/image.jst.ejs",
     "app/assets/javascripts/global/supa-uploader/templates/supa-uploader.jst.ejs",
+    "app/assets/javascripts/global/supa-uploader/views/image-list-view.js",
     "app/assets/javascripts/global/supa-uploader/views/image-view.js",
     "app/assets/javascripts/global/supa-uploader/views/supa-uploader-view.js",
     "app/assets/javascripts/lib/backbone.js",
@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
     "app/assets/stylesheets/funky-select.scss",
     "app/assets/stylesheets/funky-toolset.scss",
     "app/assets/stylesheets/funky-uploader.scss",
+    "app/assets/stylesheets/spinner.scss",
     "features/funky_select.feature",
     "features/funky_uploader.feature",
     "features/resources/bedroom.jpg",
@@ -56,6 +57,8 @@ Gem::Specification.new do |s|
     "funky-select.gemspec",
     "lib/funky-select.rb",
     "lib/funky-select/action_view/helpers/form_builder.rb",
+    "lib/funky-select/action_view/select_box.rb",
+    "lib/funky-select/action_view/uploader.rb",
     "lib/funky-select/rails/engine.rb",
     "test/dummy/README.rdoc",
     "test/dummy/Rakefile",
